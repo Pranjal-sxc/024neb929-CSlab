@@ -1,0 +1,224 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a1a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5rem;
+    background: linear-gradient(90deg, #00001a, #1a1a3d);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #a7a7ff;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: 400;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+    color: #a7a7ff;
+    transform: scale(1.1);
+}
+
+.hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: url('space.jpg') no-repeat center center/cover;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+.hero p {
+    font-size: 1.4rem;
+}
+
+.content-section {
+    padding: 4rem 5rem;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.planet-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.planet-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.2);
+}
+
+.nebula-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 3rem;
+    margin: 4rem auto;
+    text-align: center;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.nebula-box h2 {
+    margin-bottom: 1.5rem;
+    color: #a7a7ff;
+}
+
+.nebula-box p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.nebula-3d {
+    width: 100%;
+    height: 500px;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background: linear-gradient(90deg, #00001a, #1a1a3d);
+    box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure all images fit well within their sections */
+.hero-image {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Standardize content images */
+.content-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Planet images should be proportional */
+.planet-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Ensure the grid layout keeps images aligned */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.planet-card {
+    width: 250px;
+    text-align: center;
+}
+
+.nebula-3d {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Responsive Design for Mobile Screens */
+@media (max-width: 768px) {
+    .hero-image, .content-image, .planet-image {
+        max-width: 90%;
+    }
+    .grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Robot Container (Left and Right) */
+.robot-container {
+    position: fixed; /* Keeps it fixed on the screen */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    width: 300px; /* Box width */
+    height: 400px; /* Box height */
+    border: 3px solid rgba(255, 255, 255, 0.7); /* Light border */
+    border-radius: 10px; /* Smooth corners */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Glow effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Robot Viewer */
+.robot-3d {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Robot on the Left */
+.robot-container.left {
+    left: 20px; /* Position it to the left */
+}
+
+/* Robot on the Right */
+.robot-container.right {
+    right: 20px; /* Position it to the right */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .robot-container {
+        width: 250px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .robot-container {
+        display: none; /* Hide the robots on smaller screens */
+    }
+}
