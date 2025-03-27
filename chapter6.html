@@ -193,72 +193,41 @@
         <li>Write basic programs using programming syntax, variables, and operators.</li>
         <li>Implement control structures to make programs dynamic and responsive.</li>
     </ul>
+  <header>
+        <h1>C Programming Concepts and Detailed Explanation</h1>
+    </header>
 
-<h1>C Programming Concepts</h1>
-
-    <!-- 1. Brief -->
     <div class="section">
-        <h2>1. Basic Keywords in C Programming</h2>
-        <p><strong>Data Types:</strong> Define the type of data a variable can store (e.g., int, float).</p>
-        <p><strong>Control Statements:</strong> Allow conditional and branching logic (e.g., if, else, switch).</p>
-        <p><strong>Loops:</strong> Used for repetitive execution (e.g., for, while, do-while).</p>
-        <p><strong>Storage Classes:</strong> Specify variable storage duration and scope (e.g., auto, static).</p>
-        <p><strong>Type Modifiers:</strong> Modify data types (e.g., signed, unsigned, short, long).</p>
-        <p><strong>Functions:</strong> Blocks of code that perform specific tasks (e.g., return, void).</p>
-        <p><strong>Pointers:</strong> Hold the address of another variable, enabling efficient memory use.</p>
-        <p><strong>Structures and Unions:</strong> Group multiple data types together (e.g., struct, union, enum).</p>
-        <p><strong>Break and Continue:</strong> Control loop flow (e.g., break, continue).</p>
-        <p><strong>Goto:</strong> Unconditionally jump to another part of the program.</p>
-        <p><strong>Input/Output:</strong> Used for reading and displaying data (e.g., printf, scanf).</p>
-        <p><strong>Logical and Bitwise Operators:</strong> Perform logical and bit-level operations (e.g., &&, ||, &).</p>
-        <p><strong>Preprocessor Directives:</strong> Pre-process code before compilation (e.g., #include, #define).</p>
-        <p><strong>File Handling:</strong> Perform file operations (e.g., fopen, fclose, fprintf, fscanf).</p>
+        <h2>1. Brief Overview of C Programming Keywords</h2>
+        <p><strong>C programming</strong> is one of the oldest and most powerful programming languages used for system programming, application programming, and software development. It provides low-level access to memory and system resources. Below is a brief overview of the core concepts of C programming keywords:</p>
+        <ul>
+            <li><strong>Data Types:</strong> Used to define the type of data a variable can hold. This includes types like <code>int</code>, <code>float</code>, <code>char</code>, <code>double</code>, etc.</li>
+            <li><strong>Control Statements:</strong> Allow the control of the flow of the program based on conditions. Common statements include <code>if</code>, <code>else</code>, <code>switch</code>, and <code>case</code>.</li>
+            <li><strong>Loops:</strong> Used for repeating a block of code. There are different types of loops like <code>for</code>, <code>while</code>, and <code>do-while</code>.</li>
+            <li><strong>Functions:</strong> A block of code that performs a specific task. C uses function declarations and definitions to organize the code into reusable modules.</li>
+            <li><strong>Preprocessor Directives:</strong> Directives that provide instructions to the preprocessor before the compilation begins. These include <code>#include</code>, <code>#define</code>, <code>#ifdef</code>, etc.</li>
+        </ul>
     </div>
 
-    <!-- 2. Detailed Explanation with Types -->
     <div class="section">
-        <h2>2. Data Types and Storage Classes</h2>
-        <p><strong>Data Types:</strong> 
-            <ul>
-                <li><strong>int:</strong> Stores integer values (e.g., 5, -10, 100).</li>
-                <li><strong>float:</strong> Stores single-precision floating-point values (e.g., 3.14, -1.25).</li>
-                <li><strong>double:</strong> Stores double-precision floating-point values (e.g., 3.14159).</li>
-                <li><strong>char:</strong> Stores a single character (e.g., 'A', 'b').</li>
-                <li><strong>void:</strong> Represents absence of value or type.</li>
-            </ul>
-        </p>
+        <h2>2. Detailed Explanation of C Programming Concepts</h2>
+        <p>C programming has several important concepts that programmers must understand in order to write efficient and effective code. Below, we will break down key topics such as data types, loops, control structures, and storage classes in more detail.</p>
 
-        <p><strong>Storage Classes:</strong> 
-            <ul>
-                <li><strong>auto:</strong> Default storage class for local variables. Temporary and limited scope.</li>
-                <li><strong>static:</strong> Retains variable value between function calls.</li>
-                <li><strong>extern:</strong> Declares a global variable or function in multiple files.</li>
-                <li><strong>register:</strong> Suggests that a variable should be stored in CPU registers for faster access.</li>
-            </ul>
-        </p>
-    </div>
+        <h3>2.1 Data Types</h3>
+        <p><strong>Data Types</strong> in C define the type of data a variable can hold. Different data types in C allow you to store different kinds of values, such as integers, floating-point numbers, and characters.</p>
+        <ul>
+            <li><strong>int:</strong> Used to store integers (whole numbers) like 1, -3, 100. Example: <code>int num = 10;</code></li>
+            <li><strong>float:</strong> Used for single-precision floating-point numbers (decimal numbers) like 3.14, -1.25. Example: <code>float pi = 3.14;</code></li>
+            <li><strong>double:</strong> Used for double-precision floating-point numbers that require more memory for higher precision. Example: <code>double e = 2.71828;</code></li>
+            <li><strong>char:</strong> Used to store single characters like 'A', 'B', '1', etc. Example: <code>char letter = 'A';</code></li>
+            <li><strong>void:</strong> Used to indicate no data type. It's commonly used in function return types to signify no return value. Example: <code>void printMessage();</code></li>
+        </ul>
 
-    <!-- 3. Detailed Explanation with Programs for Each Type -->
-    <div class="section">
-        <h2>3. Example Programs</h2>
-        <h3>3.1 int Data Type Example</h3>
-        <pre><code>#include <stdio.h>
-int main() {
-    int num = 10;
-    printf("Integer: %d\n", num);
-    return 0;
-}</code></pre>
-
-        <h3>3.2 float Data Type Example</h3>
-        <pre><code>#include <stdio.h>
-int main() {
-    float pi = 3.14;
-    printf("Float: %.2f\n", pi);
-    return 0;
-}</code></pre>
-
-        <h3>3.3 Control Statement (if-else) Example</h3>
-        <pre><code>#include <stdio.h>
+        <h3>2.2 Control Structures</h3>
+        <p><strong>Control Structures</strong> allow you to control the flow of the program based on conditions or loops. These structures are essential for making decisions and repeating tasks in the program.</p>
+        <ul>
+            <li><strong>If-else statement:</strong> Executes a block of code based on a given condition. If the condition is true, it executes one block, otherwise, another block. Example:</li>
+            <pre><code>#include <stdio.h>
 int main() {
     int num = 5;
     if (num > 0) {
@@ -269,43 +238,105 @@ int main() {
     return 0;
 }</code></pre>
 
-        <h3>3.4 Loop (for) Example</h3>
-        <pre><code>#include <stdio.h>
+            <li><strong>Switch-case statement:</strong> Executes one out of multiple blocks of code based on the value of a variable. It's commonly used when you have multiple conditions based on the same variable. Example:</li>
+            <pre><code>#include <stdio.h>
 int main() {
-    for (int i = 1; i <= 5; i++) {
-        printf("Number: %d\n", i);
+    int day = 3;
+    switch(day) {
+        case 1:
+            printf("Monday\n");
+            break;
+        case 2:
+            printf("Tuesday\n");
+            break;
+        case 3:
+            printf("Wednesday\n");
+            break;
+        default:
+            printf("Invalid day\n");
     }
     return 0;
 }</code></pre>
+        </ul>
+
+        <h3>2.3 Loops</h3>
+        <p><strong>Loops</strong> are used when you want to repeat a block of code multiple times. In C, there are three main types of loops:</p>
+        <ul>
+            <li><strong>For loop:</strong> Typically used when the number of iterations is known in advance. Example:</li>
+            <pre><code>#include <stdio.h>
+int main() {
+    for (int i = 0; i < 5; i++) {
+        printf("Iteration %d\n", i);
+    }
+    return 0;
+}</code></pre>
+
+            <li><strong>While loop:</strong> Used when the number of iterations is unknown, but a condition must hold true for the loop to continue. Example:</li>
+            <pre><code>#include <stdio.h>
+int main() {
+    int i = 0;
+    while (i < 5) {
+        printf("Iteration %d\n", i);
+        i++;
+    }
+    return 0;
+}</code></pre>
+
+            <li><strong>Do-while loop:</strong> Similar to the while loop, but guarantees the loop runs at least once, even if the condition is false initially. Example:</li>
+            <pre><code>#include <stdio.h>
+int main() {
+    int i = 0;
+    do {
+        printf("Iteration %d\n", i);
+        i++;
+    } while (i < 5);
+    return 0;
+}</code></pre>
+        </ul>
+
+        <h3>2.4 Functions</h3>
+        <p><strong>Functions</strong> are blocks of code that perform a specific task. Functions help in making code modular and reusable. In C, there are two types of functions:</p>
+        <ul>
+            <li><strong>Standard Functions:</strong> These are built-in functions provided by the C standard library, like <code>printf()</code> and <code>scanf()</code>.</li>
+            <li><strong>User-defined Functions:</strong> These are functions that the programmer defines to perform a particular task. Example:</li>
+            <pre><code>#include <stdio.h>
+void printHello() {
+    printf("Hello, World!\n");
+}
+
+int main() {
+    printHello();
+    return 0;
+}</code></pre>
+        </ul>
     </div>
 
-    <!-- 11, 12, 13 Brief Explanation -->
     <div class="section">
-        <h2>11. Logical and Bitwise Operators</h2>
-        <p><strong>Logical Operators:</strong> Used for logical comparisons (&&, ||, !).</p>
-        <p><strong>Bitwise Operators:</strong> Operate on binary numbers (e.g., &, |, ^, ~).</p>
+        <h2>3. Detailed Explanation of Preprocessor Directives</h2>
+        <p><strong>Preprocessor Directives</strong> are instructions in C that are processed before the actual compilation. They are used to include files, define constants, and perform conditional compilation.</p>
+        <ul>
+            <li><strong>#include:</strong> Used to include external files, usually header files. For example, <code>#include <stdio.h></code> includes the standard I/O library.</li>
+            <li><strong>#define:</strong> Used to define constants or macros. Example: <code>#define PI 3.14</code> defines a constant PI with the value 3.14.</li>
+            <li><strong>#ifdef, #ifndef, #endif:</strong> Used for conditional compilation. They check whether a certain macro is defined and include or exclude code based on that condition.</li>
+        </ul>
     </div>
 
     <div class="section">
-        <h2>12. Preprocessor Directives</h2>
-        <p><strong>#include:</strong> Includes header files for external functionality.</p>
-        <p><strong>#define:</strong> Defines constant values or macros.</p>
-        <p><strong>#ifdef, #ifndef, #endif:</strong> Conditional compilation to include/exclude code.</p>
+        <h2>4. File Handling in C</h2>
+        <p><strong>File Handling</strong> allows a C program to perform operations on files such as reading, writing, opening, and closing files. C provides several functions for handling files:</p>
+        <ul>
+            <li><strong>fopen:</strong> Opens a file in the specified mode (read, write, append). Example: <code>FILE *file = fopen("data.txt", "r");</code></li>
+            <li><strong>fclose:</strong> Closes an open file. Example: <code>fclose(file);</code></li>
+            <li><strong>fprintf:</strong> Writes data to a file. Example: <code>fprintf(file, "Hello, File!\n");</code></li>
+            <li><strong>fscanf:</strong> Reads data from a file. Example: <code>fscanf(file, "%d", &num);</code></li>
+        </ul>
     </div>
 
-    <div class="section">
-        <h2>13. File Handling</h2>
-        <p><strong>FILE:</strong> A type used to work with files.</p>
-        <p><strong>fopen, fclose:</strong> Open and close files.</p>
-        <p><strong>fprintf, fscanf:</strong> Write and read data from files.</p>
-    </div>
-
-    <!-- Keywords and Functions in C -->
-    <div class="section">
-        <h2>Keywords and Functions in C</h2>
-        <p><strong>Keywords:</strong> Reserved words in C that have special meaning (e.g., int, if, for, return).</p>
-        <p><strong>Functions:</strong> Blocks of code designed to perform a specific task. Examples include <code>printf()</code> for output and <code>scanf()</code> for input.</p>
-    </div>
+    <footer>
+        <p>© 2025 C Programming Concepts | All rights reserved.</p>
+    </footer>
+</body>
+</html>
 
 <h2> C Programming Lab Works</h2>
 <div class="C-Programming works">
