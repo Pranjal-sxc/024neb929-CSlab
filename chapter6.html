@@ -41,8 +41,11 @@
             border-radius: 10px;
             margin-top: 20px;
         }
-        h2 {
+        h2{
             color: #0077b6;
+        }
+        h3{
+            color: #0096c7;
         }
         ul {
             list-style-type: none;
@@ -190,25 +193,25 @@
         <li>Write basic programs using programming syntax, variables, and operators.</li>
         <li>Implement control structures to make programs dynamic and responsive.</li>
     </ul>
-</div>
+
 
 <div class="C-Programming works">
     <h3> Program 1 : To test a number is prime or not </h3>
 
-<pre> 
-    #include <stdio.h>
+    <pre>
+ #include <stdio.h>
 
 int main() {
     int num, i, test=1;
-    //defining the vairable types 
-    
-    
+    //defining the vairable types
+
+
     printf("Enter a number: ");
     scanf("%d", &num);
-    // Asking and storing input form user 
-    
+    // Asking and storing input form user
+
     if (num <= 1) {
-        test = 0; // Not a prime number 
+        test = 0; // Not a prime number
     } else {
         for (i = 2; i * i <= num; i++) {
             if (num % i == 0) {
@@ -217,29 +220,31 @@ int main() {
             }
         }
     }
-    
+
     // Checking if the number is prime
     if (test==1) {
-        printf("%d is a prime number.\n", num); 
+        printf("%d is a prime number.\n", num);
     } else {
         printf("%d is not a prime number.\n", num);
     }
-    
+    printf("\nCode Executed by Pranjal Khatri (929) \n");
     return 0;
 }
-
 </pre>
-       <h3> Program 2: To find factors of input number . </h3>     
-<pre> 
-    #include <stdio.h>
+    <h4> Output : </h4>
+    <img src="output1.png">
+
+    <h3> Program 2: To find factors of input number . </h3>
+    <pre>
+#include <stdio.h>
 
 int main() {
     int num, i;
-    
+
     // Taking input from the user
     printf("Enter a number: ");
     scanf("%d", &num);
-    
+
     // Displaying factors
     printf("Factors of %d are: ", num);
     for (i = 1; i <= num; i++) {
@@ -249,157 +254,113 @@ int main() {
     }
     printf("\n");
     printf("Code Executed by Pranjal Khatri (929) \n");
-        
+
     return 0;
 }
 </pre>
-
+    <h4> Output :</h4>
+    <img src="output2.png">
     <h3> Program 3 : To check whether a number is Palindrome or not </h3>
 
     <pre>
-        #include <stdio.h>
+#include <stdio.h>
 
 int main() {
     int num, originalNum, reversedNum = 0, remainder;
-    
+
     // Taking input from the user
     printf("Enter a number: ");
     scanf("%d", &num);
-    
+
     originalNum = num;
-    
+
     // Reversing the number
     while (num != 0) {
         remainder = num % 10;
         reversedNum = reversedNum * 10 + remainder;
         num /= 10;
     }
-    
+
     // Checking if the number is palindrome
     if (originalNum == reversedNum) {
         printf("%d is a palindrome number.\n", originalNum);
     } else {
         printf("%d is not a palindrome number.\n", originalNum);
     }
-    
+
     printf("Code Executed by Pranjal Khatri (929) \n");
-    
+
     return 0;
 }
-            
+
     </pre>
+    <h4> Output :</h4>
+    <img src="output3.png">
 
     <h3> Program 4 : To generate fibonacci series upto user given n <sup>th</sup> term </h3>
 
-    <pre> 
-        #include <stdio.h>
+    <pre>
+#include <stdio.h>
 
 int main() {
     int n, a = 0, b = 1, c, i;
-    
+
     // Taking input from the user
     printf("Enter the number of terms: ");
     scanf("%d", &n);
-    
+
     printf("Fibonacci Series: ");
-    
+
     for (i = 0; i < n; i++) {
         printf("%d ", a);
         c = a + b;
         a = b;
         b = c;
     }
-    
+
     printf("\nCode Executed by Pranjal Khatri (929) \n");
-    
+
     return 0;
 }
     </pre>
-
-        <h3> Program 5 : To check whether a given number is perfect or not ( sum of factor = number ) </h3>
+    <h4> Output :</h4>
+    <img src="output4.png">
+    <h3> Program 5 : To check whether a given number is perfect or not ( sum of factor = number ) </h3>
 
     <pre>
-        #include <stdio.h>
+ #include <stdio.h>
 
 int main() {
     int num, sum = 0, i;
-    
+
     // Taking input from the user
     printf("Enter a number: ");
     scanf("%d", &num);
-    
+
     // Calculating sum of proper divisors
     for (i = 1; i < num; i++) {
         if (num % i == 0) {
             sum += i;
         }
     }
-    
+
     // Checking if the number is perfect
     if (sum == num) {
         printf("%d is a perfect number.\n", num);
     } else {
         printf("%d is not a perfect number.\n", num);
     }
-    
+
     printf("Code Executed by Pranjal Khatri (929) \n");
-    
+
     return 0;
 }
 
     </pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <h4> Output :</h4>
+    <img src="output5.png">
 </div>
-
+</div>
 <div class="faq-section">
     <h3>Frequently Asked Questions (FAQs)</h3>
 
