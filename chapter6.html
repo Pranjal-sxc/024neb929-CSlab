@@ -192,6 +192,96 @@
     </ul>
 </div>
 
+<div class="C-Programming works">
+
+<pre> 
+    #include <stdio.h>
+
+int main() {
+    int num, i, test=1;
+    //defining the vairable types 
+    
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    // Asking and storing input form user 
+    
+    if (num <= 1) {
+        test = 0; // Not a prime number 
+    } else {
+        for (i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                test = 0; // Not prime
+                break;
+            }
+        }
+    }
+    
+    // Checking if the number is prime
+    if (test==1) {
+        printf("%d is a prime number.\n", num); 
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+    
+    return 0;
+}
+
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
 <div class="faq-section">
     <h3>Frequently Asked Questions (FAQs)</h3>
 
