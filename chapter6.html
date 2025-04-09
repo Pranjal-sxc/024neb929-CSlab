@@ -490,6 +490,90 @@ int main() {
     <h4> Output :</h4>
     <img src="output5.png">
 </div>
+<pre> 
+    #include <stdio.h>
+    int main() {
+    int choice, n, i, j;
+
+    printf("Choose an operation:\n");
+    printf("1. Sum of two major diagonals\n");
+    printf("2. Sum of all odd and even numbers\n");
+    printf("3. Display lower triangular matrix\n");
+    printf("Enter your choice (1/2/3): ");
+    scanf("%d", &choice);
+
+    printf("Enter the number of rows for the square matrix: ");
+    scanf("%d", &n);
+
+    int matrix[n][n];
+
+    printf("Enter the elements of the %dx%d matrix:\n", n, n);
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("Element [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    switch (choice) {
+        case 1: {
+            int mainDiagonalSum = 0, antiDiagonalSum = 0;
+            for (i = 0; i < n; i++) {
+                mainDiagonalSum += matrix[i][i];
+                antiDiagonalSum += matrix[i][n - 1 - i];
+            }
+            int totalDiagonalSum = mainDiagonalSum + antiDiagonalSum;
+            if (n % 2 == 1) {
+                totalDiagonalSum -= matrix[n/2][n/2];
+            }
+            printf("Sum of the two major diagonals is: %d\n", totalDiagonalSum);
+            break;
+        }
+
+        case 2: {
+            int evenSum = 0, oddSum = 0;
+            for (i = 0; i < n; i++) {
+                for (j = 0; j < n; j++) {
+                    if (matrix[i][j] % 2 == 0) {
+                        evenSum += matrix[i][j];
+                    } else {
+                        oddSum += matrix[i][j];
+                    }
+                }
+            }
+            printf("Sum of even numbers in the matrix: %d\n", evenSum);
+            printf("Sum of odd numbers in the matrix: %d\n", oddSum);
+            break;
+        }
+
+        case 3: {
+            printf("\nLower Triangular Matrix:\n");
+            for (i = 0; i < n; i++) {
+                for (j = 0; j < n; j++) {
+                    if (j <= i) {
+                        printf("%4d", matrix[i][j]);
+                    } else {
+                        printf("    ");
+                    }
+                }
+                printf("\n");
+            }
+            break;
+        }
+
+        default:
+            printf("Invalid choice.\n");
+    }
+
+    printf("Done by Pranjal 929\n");
+
+    return 0;
+}
+
+
+</pre>
+
+        
 </div>
 <div class="faq-section">
     <h3>Frequently Asked Questions (FAQs)</h3>
