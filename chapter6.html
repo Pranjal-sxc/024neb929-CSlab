@@ -89,6 +89,23 @@
         .faq-answer {
             margin-left: 20px;
         }
+
+        #combinedoutput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* optional space between images */
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
+
+#combinedoutput img {
+    width: 100%;
+    max-width: 200px; /* dynamic size limit */
+    height: auto;
+    border: 2px solid black;
+    object-fit: cover;
+}
+
     </style>
 </head>
 <body>
@@ -574,9 +591,11 @@ int main() {
 }
 </pre>
 <h4> Output:</h4>
+            <div class="combinedoutput">    
                 <img src="output6.png">
                 <img src="output7.png">
                 <img src="output8.png">
+            </div>    
         
 </div>
 <div class="faq-section">
