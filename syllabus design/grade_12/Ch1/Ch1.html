@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Database Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #023e8a;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #0096c7;
+        }
+        .content {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            color: #0077b6;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #e3f2fd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #023e8a;
+            color: white;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0077b6;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Chapter 7: Database Management System
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="chapter1.html">Computer System</a>
+    <a href="chapter2.html">Computer Hardware</a>
+    <a href="chapter3.html">Computer Software</a>
+    <a href="chapter4.html">Number System & Boolean Algebra</a>
+    <a href="chapter5.html">Computer Security & Cyber Ethics</a>
+    <a href="chapter6.html">Introduction to Programming</a>
+    <a href="chapter7.html">Database Management</a>
+</nav>
+
+<div class="content">
+    <h2>Overview of Database Management System</h2>
+    <p>This chapter covers fundamental concepts of database management systems, including data organization, database models, normalization techniques, and practical SQL implementation.</p>
+    <img src="https://www.softwaretestinghelp.com/wp-content/qa/uploads/2019/07/Database-Management-System.png" alt="Database Management System">
+
+    <h2>Data and Information</h2>
+    <ul>
+        <li><strong>Data:</strong> Raw facts and figures without any meaning</li>
+        <li><strong>Information:</strong> Processed data that is meaningful and useful</li>
+        <li><strong>Features of Information:</strong> Accurate, timely, relevant, complete, consistent, reliable</li>
+        <li><strong>Database:</strong> Organized collection of related data</li>
+        <li><strong>Purpose of Database:</strong> To store, retrieve, manage, and manipulate data efficiently</li>
+    </ul>
+
+    <h2>Terminologies in Database</h2>
+    <ul>
+        <li><strong>Table:</strong> Collection of related data organized in rows and columns</li>
+        <li><strong>Field:</strong> Single piece of information about an entity (column)</li>
+        <li><strong>Record:</strong> Complete set of fields about one entity (row)</li>
+        <li><strong>Tuple:</strong> Another term for a record in relational databases</li>
+        <li><strong>Object:</strong> In object-oriented databases, an instance of a class</li>
+        <li><strong>Keys:</strong> Attributes used to identify records uniquely (Primary, Foreign, Candidate, etc.)</li>
+        <li><strong>Data Dictionary:</strong> Metadata repository describing database structure</li>
+    </ul>
+
+    <h2>Database Management System (DBMS)</h2>
+    <ul>
+        <li><strong>Introduction:</strong> Software system for creating, managing, and controlling databases</li>
+        <li><strong>Objectives:</strong>
+            <ul>
+                <li>Data integrity and security</li>
+                <li>Efficient data access</li>
+                <li>Concurrent access control</li>
+                <li>Data independence</li>
+            </ul>
+        </li>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Reduced data redundancy</li>
+                <li>Improved data consistency</li>
+                <li>Better data security</li>
+                <li>Efficient data sharing</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Complexity in design</li>
+                <li>Higher costs</li>
+                <li>Performance overhead</li>
+                <li>Vulnerability to failures</li>
+            </ul>
+        </li>
+    </ul>
+    <img src="https://www.guru99.com/images/1/100118_0445_WhatisDBMS1.png" alt="DBMS Architecture">
+
+    <h2>Types of Database Models</h2>
+    <ul>
+        <li><strong>Hierarchical:</strong> Tree-like structure with parent-child relationships</li>
+        <li><strong>Network:</strong> Graph structure allowing multiple parent-child relationships</li>
+        <li><strong>Relational:</strong> Data organized in tables with relationships between them</li>
+        <li><strong>Entity-Relational:</strong> Conceptual model representing entities and their relationships</li>
+    </ul>
+
+    <h2>Integrity Constraints</h2>
+    <ul>
+        <li><strong>Domain:</strong> Values must be from a defined domain</li>
+        <li><strong>Entity:</strong> Primary key cannot be null</li>
+        <li><strong>Referential:</strong> Foreign key must match a primary key in another table</li>
+        <li><strong>Keys:</strong> Primary, foreign, candidate, super, alternate keys</li>
+    </ul>
+
+    <h2>Normalization</h2>
+    <ul>
+        <li><strong>Introduction:</strong> Process of organizing data to minimize redundancy</li>
+        <li><strong>Normal Forms:</strong>
+            <ul>
+                <li><strong>1NF:</strong> Atomic values, no repeating groups</li>
+                <li><strong>2NF:</strong> In 1NF + no partial dependency</li>
+                <li><strong>3NF:</strong> In 2NF + no transitive dependency</li>
+            </ul>
+        </li>
+        <li><strong>Advantages:</strong> Reduced redundancy, improved integrity</li>
+        <li><strong>Disadvantages:</strong> More tables, complex queries</li>
+    </ul>
+
+    <h2>Centralized vs Distributed Database</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Centralized</th>
+            <th>Distributed</th>
+        </tr>
+        <tr>
+            <td>Data Location</td>
+            <td>Single location</td>
+            <td>Multiple locations</td>
+        </tr>
+        <tr>
+            <td>Advantages</td>
+            <td>Easy to manage, consistent</td>
+            <td>Faster access, fault-tolerant</td>
+        </tr>
+        <tr>
+            <td>Disadvantages</td>
+            <td>Single point of failure</td>
+            <td>Complex to manage</td>
+        </tr>
+    </table>
+
+    <h2>Database Security</h2>
+    <ul>
+        <li><strong>Introduction:</strong> Protection of database from unauthorized access</li>
+        <li><strong>Challenges:</strong> Data breaches, SQL injection, privilege abuse</li>
+        <li><strong>Security Measures:</strong> Authentication, authorization, encryption, auditing</li>
+        <li><strong>Roles of DBA:</strong> Install/upgrade DBMS, manage security, backup/recovery</li>
+    </ul>
+
+    <h2>Practical Topics: DDL and DML</h2>
+    <ul>
+        <li><strong>DDL (Data Definition Language):</strong> CREATE, ALTER, DROP, TRUNCATE</li>
+        <li><strong>DML (Data Manipulation Language):</strong> SELECT, INSERT, UPDATE, DELETE</li>
+    </ul>
+
+    <h2>SQL Data Types</h2>
+    <table>
+        <tr>
+            <th>Data Type</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>CHAR</td>
+            <td>Fixed-length character string</td>
+        </tr>
+        <tr>
+            <td>VARCHAR</td>
+            <td>Variable-length character string</td>
+        </tr>
+        <tr>
+            <td>BINARY</td>
+            <td>Fixed-length binary data</td>
+        </tr>
+        <tr>
+            <td>VARBINARY</td>
+            <td>Variable-length binary data</td>
+        </tr>
+        <tr>
+            <td>TINYBLOB</td>
+            <td>Very small BLOB (binary large object)</td>
+        </tr>
+        <tr>
+            <td>TINYTEXT</td>
+            <td>Very small text string</td>
+        </tr>
+        <tr>
+            <td>TEXT</td>
+            <td>Text string</td>
+        </tr>
+        <tr>
+            <td>LONGTEXT</td>
+            <td>Large text string</td>
+        </tr>
+        <tr>
+            <td>ENUM</td>
+            <td>String with one value from predefined list</td>
+        </tr>
+        <tr>
+            <td>BIT</td>
+            <td>Bit-field type</td>
+        </tr>
+        <tr>
+            <td>TINYINT</td>
+            <td>Very small integer</td>
+        </tr>
+        <tr>
+            <td>BOOLEAN</td>
+            <td>True or false values</td>
+        </tr>
+        <tr>
+            <td>INTEGER</td>
+            <td>Standard integer</td>
+        </tr>
+        <tr>
+            <td>FLOAT</td>
+            <td>Single-precision floating-point</td>
+        </tr>
+        <tr>
+            <td>DOUBLE</td>
+            <td>Double-precision floating-point</td>
+        </tr>
+        <tr>
+            <td>DECIMAL</td>
+            <td>Fixed-point number</td>
+        </tr>
+        <tr>
+            <td>DATE</td>
+            <td>Date value (YYYY-MM-DD)</td>
+        </tr>
+        <tr>
+            <td>DATETIME</td>
+            <td>Date and time combination</td>
+        </tr>
+    </table>
+
+    <h2>Learning Outcomes</h2>
+    <ul>
+        <li>Understand fundamental database concepts and terminologies</li>
+        <li>Explain different database models and their characteristics</li>
+        <li>Apply normalization techniques to database design</li>
+        <li>Compare centralized and distributed database systems</li>
+        <li>Implement basic database security measures</li>
+        <li>Use SQL data types appropriately in database design</li>
+    </ul>
+
+    <h2>Frequently Asked Questions (FAQs)</h2>
+    <ul>
+        <li><strong>What is the difference between data and information?</strong><br>Data is raw facts while information is processed data that has meaning.</li>
+        <li><strong>What are the advantages of DBMS?</strong><br>Reduced redundancy, improved consistency, better security, and efficient data sharing.</li>
+        <li><strong>What is normalization?</strong><br>The process of organizing data to minimize redundancy by dividing tables and defining relationships.</li>
+        <li><strong>What is the role of a DBA?</strong><br>Database Administrator manages, secures, and maintains database systems.</li>
+    </ul>
+</div>
+
+<footer>
+    &copy; 2025 NEB Computer Science. All Rights Reserved.
+</footer>
+
+</body>
+</html>
