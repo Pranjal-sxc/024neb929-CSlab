@@ -580,6 +580,149 @@ AdvisorID | AdvisorName
         </tr>
     </table>
 
+    <h2>11. Structured Query Language (SQL)</h2>
+
+<p><strong>Structured Query Language (SQL)</strong> is a standardized programming language used to manage and manipulate relational databases. It is essential for defining database structures, storing and retrieving data, and controlling access to that data. SQL is supported by all major relational database management systems (RDBMS), including MySQL, PostgreSQL, Oracle, Microsoft SQL Server, and SQLite.</p>
+
+<h3>Key Features of SQL:</h3>
+<ul>
+  <li><strong>Standardized:</strong> SQL is governed by ANSI and ISO standards, ensuring consistent functionality across different systems.</li>
+  <li><strong>Declarative:</strong> SQL focuses on *what* operation to perform, rather than *how* it is executed. The database engine handles execution details.</li>
+  <li><strong>Powerful and Flexible:</strong> SQL can handle complex queries involving multiple tables, joins, filtering, sorting, grouping, and aggregations.</li>
+  <li><strong>Widely Used:</strong> SQL is the foundational language for data analysis, web development, enterprise software, and reporting systems.</li>
+</ul>
+
+<h3>Major Components of SQL:</h3>
+<ul>
+  <li><strong>DDL (Data Definition Language):</strong> Used to define and manage database schemas. Common commands include:
+    <ul>
+      <li><code>CREATE</code> – Create a new table, view, or index.</li>
+      <li><code>ALTER</code> – Modify an existing database object.</li>
+      <li><code>DROP</code> – Delete a table or object.</li>
+      <li><code>TRUNCATE</code> – Remove all records from a table without logging each deletion.</li>
+    </ul>
+  </li>
+  <li><strong>DML (Data Manipulation Language):</strong> Used for managing data inside tables. Core commands include:
+    <ul>
+      <li><code>SELECT</code> – Retrieve data from one or more tables.</li>
+      <li><code>INSERT</code> – Add new records.</li>
+      <li><code>UPDATE</code> – Modify existing data.</li>
+      <li><code>DELETE</code> – Remove records from a table.</li>
+    </ul>
+  </li>
+  <li><strong>DCL (Data Control Language):</strong> Used to manage access permissions:
+    <ul>
+      <li><code>GRANT</code> – Give privileges to users.</li>
+      <li><code>REVOKE</code> – Remove privileges from users.</li>
+    </ul>
+  </li>
+  <li><strong>TCL (Transaction Control Language):</strong> Used to manage changes made by DML statements and group them into logical transactions:
+    <ul>
+      <li><code>COMMIT</code> – Save the transaction permanently.</li>
+      <li><code>ROLLBACK</code> – Undo changes in the current transaction.</li>
+      <li><code>SAVEPOINT</code> – Set a point within a transaction to which you can later roll back.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Importance of SQL:</h3>
+<ul>
+  <li>SQL is a foundational tool for database administration, backend development, and data science.</li>
+  <li>It supports automation, reporting, analytics, and system integration.</li>
+  <li>Understanding SQL is critical for working with structured data efficiently and accurately.</li>
+</ul>
+
+
+<h3>SQL Commands to Perform Operations</h3>
+
+<ol>
+<li>
+  <strong>a.</strong> Create a table named <code>students</code> with fields: <code>Id</code>, <code>Name</code>, <code>Class</code>, and <code>Marks</code>.<br />
+  <pre>
+CREATE TABLE students (
+  Id INT PRIMARY KEY,
+  Name VARCHAR(50),
+  Class VARCHAR(10),
+  Marks INT
+);
+  </pre>
+  <div class="output-box">
+    <strong>Output:</strong><br />
+    <img src="ch2_output/sql.a.png" alt="Output of SQL command a" />
+  </div>
+</li>
+
+<li>
+  <strong>b.</strong> Insert records into the <code>students</code> table.<br />
+  <pre>
+INSERT INTO students (Id, Name, Class, Marks) VALUES
+  (1, 'Anita', '12', 78),
+  (2, 'Bikash', '12', 82),
+  (3, 'Chandra', '12', 90),
+  (4, 'Dipesh', '11', 75);
+  </pre>
+  <div class="output-box">
+    <strong>Output:</strong><br />
+    <img src="ch2_output/sql.b.png" alt="Output of SQL command b" />
+  </div>
+</li>
+
+<li>
+  <strong>c.</strong> Display all records from the <code>students</code> table.<br />
+  <pre>
+SELECT * FROM students;
+  </pre>
+  <div class="output-box">
+    <strong>Output:</strong><br />
+    <img src="ch2_output/sql.c.png" alt="Output of SQL command c" />
+  </div>
+</li>
+
+<li>
+  <strong>d.</strong> Update the marks of the student whose name is 'Anita' to 85.<br />
+  <pre>
+UPDATE students
+SET Marks = 85
+WHERE Name = 'Anita';
+  </pre>
+  <div class="output-box">
+    <strong>Output:</strong><br />
+    <img src="ch2_output/sql.d.png" alt="Output of SQL command d" />
+  </div>
+</li>
+
+<li>
+  <strong>e.</strong> Delete the record of the student with id = 3.<br />
+  <pre>
+DELETE FROM students
+WHERE Id = 3;
+  </pre>
+  <div class="output-box">
+    <strong>Output:</strong><br />
+    <img src="ch2_output/sql.e.png" alt="Output of SQL command e" />
+  </div>
+</li>
+</ol>
+
+<style>
+  .output-box {
+    border: 2px solid #0077b6;
+    background-color: #e1f0fb;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    max-width: 600px;
+  }
+  .output-box img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+  }
+</style>
+
     <h2>Learning Outcomes</h2>
     <ul>
         <li>Understand fundamental database concepts and terminologies</li>
