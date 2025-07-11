@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CS Lab - Pranjal Khatri</title>
+  <title>CS Lab Assignments - Pranjal Khatri</title>
   <style>
     :root {
       --primary: #1e88e5;
       --bg: #f4f6f8;
       --white: #ffffff;
-      --text: #333333;
-      --muted: #777777;
+      --text: #333;
+      --muted: #777;
       --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       --card-hover: 0 12px 28px rgba(0, 0, 0, 0.12);
       --transition: 0.3s ease;
@@ -93,25 +93,21 @@
     .card h3 {
       font-size: 1.2rem;
       margin-bottom: 10px;
+    }
+
+    .card h3 a {
       color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .card h3 a:hover {
+      color: #0d47a1;
     }
 
     .card p {
       font-size: 0.95rem;
       color: var(--muted);
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .card a:hover {
-      color: #0d47a1;
     }
 
     footer {
@@ -142,37 +138,30 @@
 <body>
 
   <header>
-    <h1>CS Lab Assignments</h1>
-    <p>By Pranjal Khatri</p>
+    <h1>📘 CS Lab Assignments</h1>
+    <p>Pranjal Khatri | 024neb929-CSLab</p>
   </header>
 
   <div class="container">
     <div class="grid">
-
+      
+      <!-- Assignment Example -->
       <div class="card">
-        <h3>Assignment 1</h3>
-        <p>HTML Basics (upload coming soon)</p>
+        <h3><a href="CV_design/cv_design_index.html" target="_blank">CV Design</a></h3>
+        <p>Personal resume webpage using HTML and CSS. Includes profile image.</p>
       </div>
 
       <div class="card">
-        <h3>Assignment 2</h3>
-        <p>PHP Marks Table (upload coming soon)</p>
+        <h3><a href="#">Assignment 2</a></h3>
+        <p>Coming soon...</p>
       </div>
 
       <div class="card">
-        <h3>Assignment 3</h3>
-        <p>SQL Table Design (upload coming soon)</p>
+        <h3><a href="#">Assignment 3</a></h3>
+        <p>Coming soon...</p>
       </div>
 
-      <div class="card">
-        <h3>Assignment 4</h3>
-        <p>Remote DB Setup Notes (upload coming soon)</p>
-      </div>
-
-      <div class="card">
-        <h3>Assignment 5</h3>
-        <p>JavaScript Form Validation (upload coming soon)</p>
-      </div>
+      <!-- Add more cards as needed -->
 
     </div>
   </div>
