@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 7: Database Management System</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 1: Database Management System (DBMS) - Grade 12</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #0077b6;
@@ -17,6 +19,7 @@
             padding: 15px;
             text-align: center;
             font-size: 24px;
+            font-weight: bold;
         }
         nav {
             background-color: #023e8a;
@@ -29,6 +32,9 @@
             padding: 10px 20px;
             display: inline-block;
             transition: background-color 0.3s;
+            border-radius: 4px;
+            margin: 0 5px;
+            font-weight: 600;
         }
         nav a:hover {
             background-color: #0096c7;
@@ -38,15 +44,21 @@
             max-width: 900px;
             margin: 20px auto;
             background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
         h2 {
             color: #0077b6;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #023e8a;
+            margin-top: 20px;
         }
         ul {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: disc;
+            margin-left: 20px;
         }
         ul li {
             background: #e3f2fd;
@@ -54,23 +66,14 @@
             padding: 10px;
             border-radius: 5px;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #023e8a;
-            color: white;
-            margin-top: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
+        p {
             margin: 10px 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            font-size: 14px;
         }
         table, th, td {
             border: 1px solid #ddd;
@@ -86,29 +89,298 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #023e8a;
+            color: white;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        /* Smaller indent for nested lists */
+        ul ul {
+            list-style-type: circle;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    Chapter 7: Database Management System
+    Chapter 1: Database Management System (DBMS) - Grade 12
 </header>
 
 <nav>
     <a href="index.html">Home</a>
-    <a href="chapter1.html">Computer System</a>
-    <a href="chapter2.html">Computer Hardware</a>
-    <a href="chapter3.html">Computer Software</a>
-    <a href="chapter4.html">Number System & Boolean Algebra</a>
-    <a href="chapter5.html">Computer Security & Cyber Ethics</a>
-    <a href="chapter6.html">Introduction to Programming</a>
-    <a href="chapter7.html">Database Management</a>
+    <a href="chapter1.html">DBMS</a>
+    <a href="chapter2.html">Chapter 2</a>
+    <a href="chapter3.html">Chapter 3</a>
+    <a href="chapter4.html">Chapter 4</a>
+    <a href="chapter5.html">Chapter 5</a>
+    <a href="chapter6.html">Chapter 6</a>
 </nav>
 
 <div class="content">
+
     <h2>Overview of Database Management System</h2>
     <p>This chapter covers fundamental concepts of database management systems, including data organization, database models, normalization techniques, and practical SQL implementation.</p>
     <img src="https://www.softwaretestinghelp.com/wp-content/qa/uploads/2019/07/Database-Management-System.png" alt="Database Management System">
+
+    <h2>1. What is Database and DBMS? Advantages and Disadvantages of DBMS</h2>
+    <h3>What is a Database?</h3>
+    <p>A database is an organized collection of related data that can be easily accessed, managed, and updated. It stores data in structured formats such as tables.</p>
+    <h3>What is a DBMS?</h3>
+    <p>A Database Management System (DBMS) is software that interacts with users and applications to capture and analyze data, and manages the database. It allows creation, updating, querying, and administration of databases.</p>
+
+    <h3>Advantages of DBMS:</h3>
+    <ul>
+        <li><strong>Reduced Data Redundancy:</strong> Minimizes duplicate data storage.</li>
+        <li><strong>Improved Data Sharing:</strong> Allows multiple users to access data concurrently.</li>
+        <li><strong>Data Integrity:</strong> Maintains accuracy and consistency of data.</li>
+        <li><strong>Security:</strong> Controls unauthorized access to sensitive data.</li>
+        <li><strong>Backup and Recovery:</strong> Supports data recovery in case of failure.</li>
+        <li><strong>Data Independence:</strong> Changes in database structure don’t affect applications.</li>
+    </ul>
+
+    <h3>Disadvantages of DBMS:</h3>
+    <ul>
+        <li><strong>Complexity:</strong> Requires skilled personnel for design and management.</li>
+        <li><strong>Cost:</strong> High initial investment in hardware and software.</li>
+        <li><strong>Performance Overhead:</strong> Additional processing may reduce speed.</li>
+        <li><strong>Single Point of Failure:</strong> System failure can halt operations.</li>
+    </ul>
+
+    <h2>2. File Processing System vs DBMS</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>File Processing System</th>
+            <th>DBMS</th>
+        </tr>
+        <tr>
+            <td>Data Redundancy</td>
+            <td>High; same data stored in multiple files</td>
+            <td>Low; integrated data storage</td>
+        </tr>
+        <tr>
+            <td>Data Consistency</td>
+            <td>Poor; hard to keep data consistent across files</td>
+            <td>High; enforced through constraints and rules</td>
+        </tr>
+        <tr>
+            <td>Data Sharing</td>
+            <td>Limited; data locked to specific applications</td>
+            <td>Efficient; multiple users and applications can share data</td>
+        </tr>
+        <tr>
+            <td>Data Integrity</td>
+            <td>Manual enforcement; prone to errors</td>
+            <td>Automatic integrity constraints (keys, rules)</td>
+        </tr>
+        <tr>
+            <td>Security</td>
+            <td>Basic or none</td>
+            <td>Robust access controls and security mechanisms</td>
+        </tr>
+    </table>
+
+    <h2>3. Different Models of DBMS with Advantages and Disadvantages</h2>
+    <h3>Hierarchical Model</h3>
+    <p>Data is organized in a tree-like structure with parent-child relationships.</p>
+    <ul>
+        <li><strong>Advantages:</strong> Simple to understand and implement; fast for hierarchical data.</li>
+        <li><strong>Disadvantages:</strong> Rigid structure; difficult to handle many-to-many relationships.</li>
+    </ul>
+
+    <h3>Network Model</h3>
+    <p>Data is represented as a graph allowing multiple parent-child relationships.</p>
+    <ul>
+        <li><strong>Advantages:</strong> More flexible than hierarchical; supports many-to-many relationships.</li>
+        <li><strong>Disadvantages:</strong> Complex design and management; difficult to query.</li>
+    </ul>
+
+    <h3>Relational Model</h3>
+    <p>Data is organized in tables (relations) with rows and columns.</p>
+    <ul>
+        <li><strong>Advantages:</strong> Simple tabular structure; powerful and flexible querying (SQL); widely used.</li>
+        <li><strong>Disadvantages:</strong> Can be less efficient for complex hierarchical data.</li>
+    </ul>
+
+    <h3>Entity-Relationship Model</h3>
+    <p>Conceptual data model representing entities and their relationships.</p>
+    <ul>
+        <li><strong>Advantages:</strong> Good for designing database schemas; easy visualization.</li>
+        <li><strong>Disadvantages:</strong> Abstract model, not used directly for database storage.</li>
+    </ul>
+
+    <h2>4. What is a Relational Database? How is it Different?</h2>
+    <p>A <strong>relational database</strong> stores data in tables (relations) with rows (tuples) and columns (attributes). Each table has a primary key to uniquely identify rows.</p>
+    <p><strong>Differences from other models:</strong></p>
+    <ul>
+        <li>Uses tabular format vs tree or graph structures.</li>
+        <li>Supports powerful query language (SQL).</li>
+        <li>Provides data independence and easy schema modification.</li>
+        <li>Widely adopted due to simplicity and flexibility.</li>
+    </ul>
+
+    <h2>5. What is Data Redundancy? How Does DBMS Help Reduce It?</h2>
+    <p><strong>Data redundancy</strong> means the same piece of data is stored unnecessarily in multiple places. This causes inconsistency, increased storage, and maintenance issues.</p>
+    <p><strong>How DBMS reduces redundancy:</strong></p>
+    <ul>
+        <li>Stores data centrally in a single database.</li>
+        <li>Uses normalization to organize data efficiently.</li>
+        <li>Controls data access and updates through integrity constraints.</li>
+        <li>Eliminates duplicate data entries across tables.</li>
+    </ul>
+
+    <h2>6. Centralized vs Distributed Database Systems</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Centralized Database</th>
+            <th>Distributed Database</th>
+        </tr>
+        <tr>
+            <td>Data Location</td>
+            <td>Stored at a single central location</td>
+            <td>Stored across multiple physical locations</td>
+        </tr>
+        <tr>
+            <td>Management</td>
+            <td>Managed from one site</td>
+            <td>Multiple sites manage their portions</td>
+        </tr>
+        <tr>
+            <td>Advantages</td>
+            <td>Easy to manage, consistent data</td>
+            <td>Improved reliability, availability, and performance</td>
+        </tr>
+        <tr>
+            <td>Disadvantages</td>
+            <td>Single point of failure; slower access for remote users</td>
+            <td>Complex management and synchronization</td>
+        </tr>
+    </table>
+
+    <h2>7. Database Administrator (DBA) and Responsibilities</h2>
+    <p><strong>Database Administrator (DBA)</strong> is the person responsible for managing and maintaining the DBMS environment.</p>
+    <h3>Major Responsibilities:</h3>
+    <ul>
+        <li>Installing and upgrading DBMS software.</li>
+        <li>Designing and implementing database schemas.</li>
+        <li>Ensuring data security and access control.</li>
+        <li>Monitoring database performance and tuning.</li>
+        <li>Backup and recovery management.</li>
+        <li>Managing user accounts and permissions.</li>
+        <li>Troubleshooting database issues.</li>
+    </ul>
+
+    <h2>8. Normalization: Definition and Normal Forms</h2>
+    <p><strong>Normalization</strong> is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
+    <h3>First Normal Form (1NF):</h3>
+    <p>Table is in 1NF if all columns contain atomic (indivisible) values, and there are no repeating groups.</p>
+    <h4>Example:</h4>
+    <pre>
+StudentID | Name     | Subjects
+--------------------------------
+1         | Alice    | Math, Physics
+2         | Bob      | Chemistry
+    </pre>
+    <p>Here, Subjects is not atomic. To convert to 1NF:</p>
+    <pre>
+StudentID | Name  | Subject
+---------------------------
+1         | Alice | Math
+1         | Alice | Physics
+2         | Bob   | Chemistry
+    </pre>
+
+    <h3>Second Normal Form (2NF):</h3>
+    <p>Table is in 2NF if it is in 1NF and every non-key attribute is fully functionally dependent on the entire primary key (no partial dependency).</p>
+    <h4>Example:</h4>
+    <pre>
+StudentID | CourseID | CourseName | Grade
+-----------------------------------------
+1         | C1       | Math       | A
+1         | C2       | Physics    | B
+    </pre>
+    <p>If CourseName depends only on CourseID, not on the full composite key (StudentID, CourseID), separate into two tables:</p>
+    <pre>
+Courses:
+CourseID | CourseName
+---------------------
+C1       | Math
+C2       | Physics
+
+Grades:
+StudentID | CourseID | Grade
+----------------------------
+1         | C1       | A
+1         | C2       | B
+    </pre>
+
+    <h3>Third Normal Form (3NF):</h3>
+    <p>Table is in 3NF if it is in 2NF and all attributes are only dependent on the primary key (no transitive dependency).</p>
+    <h4>Example:</h4>
+    <pre>
+StudentID | AdvisorID | AdvisorName
+-----------------------------------
+1         | 10        | Dr. Smith
+2         | 11        | Dr. Jones
+    </pre>
+    <p>AdvisorName depends on AdvisorID, not StudentID. To convert:</p>
+    <pre>
+Students:
+StudentID | AdvisorID
+---------------------
+1         | 10
+2         | 11
+
+Advisors:
+AdvisorID | AdvisorName
+-----------------------
+10        | Dr. Smith
+11        | Dr. Jones
+    </pre>
+
+    <h2>9. Keys in DBMS</h2>
+    <h3>Primary Key</h3>
+    <p>A unique identifier for each record in a table. It cannot be null.</p>
+    <p><strong>Example:</strong> StudentID in a Student table.</p>
+
+    <h3>Foreign Key</h3>
+    <p>An attribute that creates a link between two tables by referring to the primary key in another table.</p>
+    <p><strong>Example:</strong> AdvisorID in the Student table referring to AdvisorID in Advisors table.</p>
+
+    <h3>Candidate Key</h3>
+    <p>Attributes that can uniquely identify a record. One candidate key is chosen as the primary key.</p>
+    <p><strong>Example:</strong> Both StudentID and Email could be candidate keys, but StudentID is chosen as primary key.</p>
+
+    <h2>10. What is SQL? Components and Common Functions</h2>
+    <p><strong>SQL (Structured Query Language)</strong> is a standard programming language used to manage and manipulate relational databases.</p>
+
+    <h3>Components of SQL:</h3>
+    <ul>
+        <li><strong>DDL (Data Definition Language):</strong> Commands like CREATE, ALTER, DROP used to define database structure.</li>
+        <li><strong>DML (Data Manipulation Language):</strong> Commands like SELECT, INSERT, UPDATE, DELETE used to manipulate data.</li>
+        <li><strong>DCL (Data Control Language):</strong> Commands like GRANT, REVOKE used for permissions and access control.</li>
+        <li><strong>TCL (Transaction Control Language):</strong> Commands like COMMIT, ROLLBACK used to manage transactions.</li>
+    </ul>
+
+    <h3>Common SQL Functions:</h3>
+    <ul>
+        <li><strong>Aggregate Functions:</strong> COUNT(), SUM(), AVG(), MAX(), MIN()</li>
+        <li><strong>String Functions:</strong> CONCAT(), SUBSTRING(), LENGTH(), UPPER(), LOWER()</li>
+        <li><strong>Date Functions:</strong> NOW(), CURDATE(), DATEADD(), DATEDIFF()</li>
+        <li><strong>Numeric Functions:</strong> ROUND(), FLOOR(), CEIL()</li>
+    </ul>
+
+    <!-- Existing content below -->
 
     <h2>Data and Information</h2>
     <ul>
