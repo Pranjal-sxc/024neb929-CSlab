@@ -107,6 +107,18 @@
         ul ul {
             list-style-type: circle;
         }
+
+        /* Image manipulation */
+        img.professional-image {
+             max-width: 69%;
+              height: auto;
+              display: block;
+             margin: 20px auto;
+              border-radius: 8px;
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              object-fit: contain;
+         }
+
     </style>
 </head>
 <body>
@@ -129,8 +141,10 @@
 
     <h2>Overview of Database Management System</h2>
     <p>This chapter covers fundamental concepts of database management systems, including data organization, database models, normalization techniques, and practical SQL implementation.</p>
-    <img src="https://www.softwaretestinghelp.com/wp-content/qa/uploads/2019/07/Database-Management-System.png" alt="Database Management System">
-
+   <img src="https://www.erp-information.com/wp-content/uploads/2021/01/database-management.png" 
+        alt="Database Management System" 
+        class="professional-image" 
+    />
     <h2>1. What is Database and DBMS? Advantages and Disadvantages of DBMS</h2>
     <h3>What is a Database?</h3>
     <p>A database is an organized collection of related data that can be easily accessed, managed, and updated. It stores data in structured formats such as tables.</p>
@@ -704,6 +718,122 @@ WHERE Id = 3;
 </li>
 </ol>
 
+
+<h2 style="color: #0077b6; margin-top: 50px; font-size: 28px;">Key Terms and Definitions</h2>
+
+<div style="margin-top: 25px; font-size: 16px; color: #333; line-height: 1.8; max-width: 900px;">
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">a. Data Dictionary:</strong> 
+    A data dictionary is a centralized catalog containing detailed information about the data elements within a database system. It documents attributes such as field names, data types, constraints, relationships, and access permissions. Acting as the metadata repository, it ensures consistency, enforces standards, and assists developers, DBAs, and end-users in understanding the database structure and usage.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">b. Primary Key:</strong> 
+    A primary key is a column or set of columns in a relational table that uniquely identifies each record. It guarantees entity integrity by disallowing null and duplicate values. Primary keys are fundamental to relational design, serving as the anchor point for establishing relationships and enforcing uniqueness across the dataset.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">c. Relationship:</strong> 
+    A relationship represents the logical association between two or more database tables. It facilitates the linking of data using keys—typically a primary key in one table and a foreign key in another. Relationships allow for scalable data organization, minimize redundancy, and enable efficient querying across interconnected records.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">d. Data Manipulation Language (DML):</strong> 
+    DML is a subset of SQL that enables users to interact with and modify data within tables. It includes statements such as <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">SELECT</code>, <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">INSERT</code>, <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">UPDATE</code>, and <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">DELETE</code>. These operations empower users to retrieve, add, modify, or remove records while preserving the underlying table structure.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">e. Structured Query Language (SQL):</strong> 
+    SQL is the industry-standard language for defining, managing, and querying relational databases. It encompasses multiple components—DDL, DML, DCL, and TCL—that together support everything from schema creation and data manipulation to user access control and transaction management. SQL’s declarative nature makes it versatile for both administrative and analytical tasks.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">f. Data Integrity:</strong> 
+    Data integrity refers to the accuracy, consistency, and reliability of data throughout its lifecycle. It is enforced through rules, constraints, and keys—such as primary keys, foreign keys, and validation checks—to prevent anomalies and maintain trustworthiness of the stored information, especially in multi-user environments.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">g. Data Definition Language (DDL):</strong> 
+    DDL is the SQL component responsible for defining and altering the structure of database objects. It includes commands like <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">CREATE</code>, <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">ALTER</code>, <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">DROP</code>, and <code style="background-color: #f0f8ff; padding: 2px 5px; border-radius: 4px; font-family: monospace;">TRUNCATE</code>. These commands define tables, indexes, views, and schemas, forming the blueprint of the database system.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">h. Data Security:</strong> 
+    Data security comprises policies, protocols, and technologies used to protect databases against unauthorized access, breaches, or malicious attacks. It involves encryption, access control, user authentication, and activity logging to ensure confidentiality, integrity, and availability of sensitive data assets.
+  </div>
+
+  <div style="
+      background-color: #e7f3fc;
+      border: 1.5px solid #90caf9;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 119, 182, 0.1);
+      margin-bottom: 20px;
+  ">
+    <strong style="color: #023e8a; font-size: 18px;">i. Database System:</strong> 
+    A database system refers to the complete ecosystem that includes the database, the database management system (DBMS), and the application interfaces that interact with them. It is designed to efficiently handle data storage, access, security, backup, and multi-user operations while ensuring performance and reliability.
+  </div>
+
+</div>
+
+
 <style>
   .output-box {
     border: 2px solid #0077b6;
@@ -733,13 +863,126 @@ WHERE Id = 3;
         <li>Use SQL data types appropriately in database design</li>
     </ul>
 
-    <h2>Frequently Asked Questions (FAQs)</h2>
-    <ul>
-        <li><strong>What is the difference between data and information?</strong><br>Data is raw facts while information is processed data that has meaning.</li>
-        <li><strong>What are the advantages of DBMS?</strong><br>Reduced redundancy, improved consistency, better security, and efficient data sharing.</li>
-        <li><strong>What is normalization?</strong><br>The process of organizing data to minimize redundancy by dividing tables and defining relationships.</li>
-        <li><strong>What is the role of a DBA?</strong><br>Database Administrator manages, secures, and maintains database systems.</li>
-    </ul>
+ <style>
+  /* FAQ Section Styles */
+  .faq-container {
+    max-width: 900px;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+  }
+
+  .faq-item {
+    border: 1.5px solid #90caf9;
+    border-radius: 10px;
+    background-color: #e7f3fc;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 8px rgba(0, 119, 182, 0.1);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 25px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 18px;
+    color: #023e8a;
+    cursor: pointer;
+    outline: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  .faq-question:hover,
+  .faq-question:focus {
+    background-color: #d0e7fc;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    padding: 0 25px;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    user-select: text;
+  }
+
+  .faq-answer.active {
+    padding: 15px 25px 20px;
+  }
+</style>
+
+<h2 style="color: #0077b6; font-size: 28px; margin-top: 50px;">Frequently Asked Questions (FAQs)</h2>
+
+<div class="faq-container">
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      What is the difference between data and information?
+    </button>
+    <div class="faq-answer">
+      <p><strong>Data</strong> refers to raw, unprocessed facts and figures without context or meaning, such as numbers, characters, or symbols collected from various sources. <strong>Information</strong> is the processed, organized, and meaningful interpretation of data, which helps users make decisions and understand the context. In essence, information is data that has been given relevance and purpose.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      What are the advantages of DBMS?
+    </button>
+    <div class="faq-answer">
+      <p>A Database Management System (DBMS) provides numerous advantages including:</p>
+      <ul>
+        <li><strong>Reduced Data Redundancy:</strong> Minimizes duplicate data storage by centralizing data management.</li>
+        <li><strong>Improved Data Consistency:</strong> Ensures that all users access the same up-to-date data, preventing discrepancies.</li>
+        <li><strong>Enhanced Security:</strong> Implements access controls and permissions to protect sensitive data from unauthorized users.</li>
+        <li><strong>Efficient Data Sharing:</strong> Enables multiple users and applications to access and manipulate data concurrently without conflicts.</li>
+        <li><strong>Backup and Recovery:</strong> Provides mechanisms for data backup and recovery to protect against data loss.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      What is normalization?
+    </button>
+    <div class="faq-answer">
+      <p>Normalization is a systematic process in database design used to organize data to minimize redundancy and dependency. It involves dividing large tables into smaller, related tables and defining relationships between them, ensuring that each piece of data is stored only once. This process helps maintain data integrity and improves database efficiency by reducing update anomalies.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      What is the role of a DBA?
+    </button>
+    <div class="faq-answer">
+      <p>A Database Administrator (DBA) is responsible for the installation, configuration, and maintenance of the database environment. Key roles include ensuring data security, managing user access, performing backup and recovery operations, optimizing database performance, and troubleshooting issues. The DBA acts as the guardian of the data, ensuring it is accurate, available, and secure for all users and applications.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const faqButtons = document.querySelectorAll('.faq-question');
+
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      button.setAttribute('aria-expanded', !isExpanded);
+
+      if (!isExpanded) {
+        answer.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.classList.remove('active');
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+</script>
+
+
 </div>
 
 <footer>
