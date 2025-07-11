@@ -1,1 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: C-Programming Part 2</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for code blocks to ensure readability and prevent overflow */
+        pre {
+            white-space: pre-wrap; /* Wraps long lines */
+            word-wrap: break-word; /* Breaks words if necessary */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0; /* Tailwind's border-gray-200 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #ebf8ff; /* Tailwind's bg-blue-50 */
+            font-weight: 600;
+            color: #2b6cb0; /* Tailwind's text-blue-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-blue-700 text-white py-4 text-center shadow-md">
+        <h1 class="text-3xl font-bold">Chapter 2: C-Programming Part 2 - Grade 12</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-900 py-3 shadow-lg">
+        <ul class="flex justify-center space-x-6 md:space-x-10">
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">Home</a></li>
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">ch1</a></li>
+            <li><a href="#" class="text-blue-200 bg-blue-700 px-3 py-2 rounded-md font-semibold shadow-inner">C-Programming Part 2</a></li>
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">ch3</a></li>
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">ch4</a></li>
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">ch5</a></li>
+            <li><a href="#" class="text-white hover:text-blue-200 px-3 py-2 rounded-md transition duration-300 ease-in-out">ch6</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white p-6 md:p-8 rounded-xl shadow-lg mt-8">
+            <h2 class="text-2xl md:text-3xl font-semibold text-blue-700 mb-6">Unit 2 – C Programming: Advanced Concepts</h2>
+            <p class="mb-6 text-lg leading-relaxed">This unit delves deeper into C programming, focusing on modularity and memory management. We will explore the power of functions, different storage classes, and advanced techniques like recursion and array passing.</p>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">1. Working with Functions</h3>
+            <p class="mb-4">Functions are fundamental building blocks in C programming. They allow you to break down a large program into smaller, manageable, and reusable modules. This approach enhances code readability, reduces redundancy, and simplifies debugging.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">a. Define Function</h4>
+            <p class="mb-4">A function is a self-contained block of statements that performs a specific task. When a function is called, the program's control is transferred to that function. When the function completes its task, it returns control to the point from where it was called.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">b. Syntax of Functions</h4>
+            <p class="mb-2">The general syntax for a function definition in C is:</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+return_type function_name(parameter_list) {
+    // body of the function
+    // statements to be executed
+    // return value (if return_type is not void)
+}
+                </code></pre>
+                <ul class="list-disc list-inside mt-4 text-sm md:text-base">
+                    <li><strong class="font-semibold"><code>return_type</code></strong>: Specifies the data type of the value that the function will return. If the function does not return any value, <code>void</code> is used.</li>
+                    <li><strong class="font-semibold"><code>function_name</code></strong>: A unique identifier for the function.</li>
+                    <li><strong class="font-semibold"><code>parameter_list</code></strong>: A comma-separated list of variables that will receive values from the caller. If the function takes no parameters, an empty parenthesis <code>()</code> is used.</li>
+                </ul>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">c. Types of Functions</h4>
+            <p class="mb-4">Functions in C can be broadly categorized into two types:</p>
+            <ul class="list-disc list-inside space-y-2 mb-6 text-sm md:text-base">
+                <li><strong class="font-semibold">Library Functions (Built-in Functions):</strong> These are pre-defined functions available in C standard libraries (e.g., <code>stdio.h</code>, <code>math.h</code>). You can use them directly by including the appropriate header file. Examples include <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>, <code>strlen()</code>.</li>
+                <li><strong class="font-semibold">User-defined Functions:</strong> These are functions created by the programmer to perform specific tasks as per the program's requirements. They promote modularity and reusability.</li>
+            </ul>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">d. Components of a Function</h4>
+            <p class="mb-4">A user-defined function typically involves three main components:</p>
+            <ol class="list-decimal list-inside space-y-4 mb-6 text-sm md:text-base">
+                <li><strong class="font-semibold">Function Prototype (Declaration):</strong>
+                    <p class="mt-1">A function prototype tells the compiler about the function's name, return type, and parameters. It must be declared before the function is called. It's usually placed at the beginning of the program (before <code>main()</code>) or in a header file.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+return_type function_name(parameter_list); // Example: int add(int a, int b);
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">Function Call:</strong>
+                    <p class="mt-1">To execute a function, you need to call it from another function (e.g., <code>main()</code>). When a function is called, the control transfers to the called function.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+function_name(arguments); // Example: sum = add(10, 20);
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">Function Definition:</strong>
+                    <p class="mt-1">This is the actual body of the function where the code to perform the specific task is written. It contains the statements that are executed when the function is called.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+return_type function_name(parameter_list) {
+    // Body of the function
+}
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">Return Type:</strong>
+                    <p class="mt-1">The return type specifies the type of value that the function will send back to the calling function. If a function does not return any value, its return type is <code>void</code>.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+// Function returning an integer
+int sum(int a, int b) {
+    return a + b;
+}
+
+// Function not returning any value
+void displayMessage() {
+    printf("Hello from the function!\n");
+}
+                        </code></pre>
+                    </div>
+                </li>
+            </ol>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">2. Categories of Functions with Examples</h3>
+            <p class="mb-4">Functions can be categorized based on whether they take arguments and/or return a value.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">i. Function with Return Type but No Arguments</h4>
+            <p class="mb-2">This type of function performs a task and returns a value to the calling function, but it does not accept any input arguments.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype
+int getNumber();
+
+int main() {
+    int num;
+    num = getNumber(); // Function call
+    printf("The number is: %d\n", num);
+    return 0;
+}
+
+// Function definition
+int getNumber() {
+    return 100; // Returns an integer value
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">ii. Function with Return Type with Arguments</h4>
+            <p class="mb-2">This is a common type of function that takes input arguments, performs operations based on these arguments, and then returns a single value to the calling function.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype
+int add(int a, int b);
+
+int main() {
+    int result;
+    result = add(5, 7); // Function call with arguments
+    printf("Sum is: %d\n", result);
+    return 0;
+}
+
+// Function definition
+int add(int x, int y) { // x and y are parameters
+    return x + y; // Returns the sum of x and y
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">iii. Function with No Return Type with No Arguments</h4>
+            <p class="mb-2">These functions perform a specific task but do not return any value to the calling function, nor do they accept any arguments. They are declared with a <code>void</code> return type.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype
+void displayGreeting();
+
+int main() {
+    displayGreeting(); // Function call
+    return 0;
+}
+
+// Function definition
+void displayGreeting() {
+    printf("Hello, welcome to C programming!\n");
+    // No return statement as return type is void
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">iv. Function with No Return Type with Arguments</h4>
+            <p class="mb-2">These functions accept input arguments to perform their task but do not return any value to the calling function. They are also declared with a <code>void</code> return type.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype
+void printSum(int a, int b);
+
+int main() {
+    printSum(10, 20); // Function call with arguments
+    return 0;
+}
+
+// Function definition
+void printSum(int x, int y) { // x and y are parameters
+    int sum = x + y;
+    printf("The sum of %d and %d is: %d\n", x, y, sum);
+    // No return statement
+}
+                </code></pre>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">3. Storage Classes</h3>
+            <p class="mb-4">Storage classes in C determine the scope, visibility, and lifetime of variables and functions. They define where a variable will be stored, its initial value, and its availability within the program.</p>
+            <ul class="list-disc list-inside space-y-4 mb-6 text-sm md:text-base">
+                <li><strong class="font-semibold">i. Automatic (<code>auto</code>):</strong>
+                    <p class="mt-1">Variables declared with <code>auto</code> are local to the block in which they are defined. They are created when the block is entered and destroyed when the block is exited. By default, all local variables are <code>auto</code>, so the keyword is rarely used explicitly.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+void exampleAuto() {
+    auto int x = 10; // 'x' is an automatic variable
+    printf("Value of x: %d\n", x);
+}
+
+int main() {
+    exampleAuto();
+    // printf("Value of x: %d\n", x); // Error: x is not accessible here
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">ii. External (<code>extern</code>):</strong>
+                    <p class="mt-1">The <code>extern</code> storage class is used to declare a variable or function that has been defined in another file or later in the current file. It tells the compiler that the variable/function exists elsewhere and will be linked later. It's primarily used for global variables and functions to extend their visibility.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+// file1.c
+int globalVar = 50; // Definition of a global variable
+
+// file2.c
+#include &lt;stdio.h&gt;
+extern int globalVar; // Declaration of globalVar, defined in file1.c
+
+int main() {
+    printf("Value of globalVar: %d\n", globalVar);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">iii. Register (<code>register</code>):</strong>
+                    <p class="mt-1">The <code>register</code> storage class suggests to the compiler that the variable should be stored in a CPU register instead of memory. This can potentially speed up access to the variable. However, the compiler makes the final decision, and it might store it in memory if registers are not available or if it deems it unnecessary. Register variables cannot have their address taken (i.e., you cannot use the <code>&</code> operator on them).</p>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+int main() {
+    register int counter = 0; // Suggests 'counter' be stored in a register
+    for (counter = 0; counter < 5; counter++) {
+        printf("Counter: %d\n", counter);
+    }
+    // int* ptr = &counter; // Error: cannot take address of a register variable
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                </li>
+                <li><strong class="font-semibold">iv. Static (<code>static</code>):</strong>
+                    <p class="mt-1">The <code>static</code> storage class has different meanings depending on where it's used:</p>
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li><strong class="font-semibold">For local variables:</strong> A <code>static</code> local variable retains its value between function calls. It is initialized only once and its lifetime is the entire duration of the program, even though its scope is local to the function/block.</li>
+                        <li><strong class="font-semibold">For global variables/functions:</strong> A <code>static</code> global variable or function has file scope, meaning it is only visible within the file where it is defined. It cannot be accessed from other files using <code>extern</code>.</li>
+                    </ul>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mt-2 overflow-x-auto shadow-sm">
+                        <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+void func() {
+    static int count = 0; // Static local variable
+    count++;
+    printf("Count: %d\n", count);
+}
+
+int main() {
+    func(); // Output: Count: 1
+    func(); // Output: Count: 2 (count retains its value)
+    func(); // Output: Count: 3
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                </li>
+            </ul>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">4. Recursive Function with Syntax and Examples</h3>
+            <p class="mb-4">A recursive function is a function that calls itself, either directly or indirectly. Recursion is a powerful technique for solving problems that can be broken down into smaller, self-similar subproblems. Every recursive function must have a base case to prevent infinite recursion.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">Syntax of Recursive Function</h4>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+return_type recursive_function(parameters) {
+    // Base case: Condition to stop recursion
+    if (condition) {
+        // return a value or perform action
+    }
+    // Recursive step: Function calls itself
+    else {
+        recursive_function(modified_parameters);
+    }
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">Example: Factorial Calculation using Recursion</h4>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype
+long int factorial(int n);
+
+int main() {
+    int num = 5;
+    printf("Factorial of %d = %ld\n", num, factorial(num));
+    return 0;
+}
+
+// Recursive function to calculate factorial
+long int factorial(int n) {
+    // Base case: if n is 0 or 1, factorial is 1
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    // Recursive step: n * factorial(n-1)
+    else {
+        return n * factorial(n - 1);
+    }
+}
+                </code></pre>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">5. Demonstration of Passing Array to a Function</h3>
+            <p class="mb-4">In C, arrays are passed to functions by reference (or more accurately, by passing the address of the first element). This means that any changes made to the array inside the function will affect the original array in the calling function. When passing an array, you typically pass the array name (which decays to a pointer to its first element) and its size.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">Example: Sum of Array Elements using a Function</h4>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype: array parameter can be declared as a pointer or an array
+int calculateSum(int arr[], int size); // or int calculateSum(int* arr, int size);
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int size = sizeof(numbers) / sizeof(numbers[0]); // Calculate array size
+    int sum;
+
+    sum = calculateSum(numbers, size); // Pass array and its size to the function
+
+    printf("The sum of array elements is: %d\n", sum);
+    return 0;
+}
+
+// Function definition to calculate the sum of array elements
+int calculateSum(int arr[], int size) {
+    int total = 0;
+    int i;
+    for (i = 0; i < size; i++) {
+        total += arr[i]; // Accessing array elements
+    }
+    return total;
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">Example: Modifying Array Elements in a Function</h4>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+
+// Function prototype to double each element of an array
+void doubleElements(int arr[], int size);
+
+int main() {
+    int my_array[] = {1, 2, 3, 4, 5};
+    int size = sizeof(my_array) / sizeof(my_array[0]);
+    int i;
+
+    printf("Original array: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", my_array[i]);
+    }
+    printf("\n");
+
+    doubleElements(my_array, size); // Pass array to function for modification
+
+    printf("Array after doubling: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", my_array[i]); // Original array is modified
+    }
+    printf("\n");
+
+    return 0;
+}
+
+// Function definition to double each element
+void doubleElements(int arr[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        arr[i] = arr[i] * 2; // Modifying the array elements
+    }
+}
+                </code></pre>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-blue-700 mb-4">6. Structures and Unions</h3>
+            <p class="mb-4">Structures and Unions are user-defined data types in C that allow you to combine different types of data under a single name. They are crucial for organizing related data in a meaningful way.</p>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">a. Structures (<code>struct</code>)</h4>
+            <p class="mb-2">A structure is a collection of variables of different data types under a single name. It is used to represent a record, where each member of the structure represents a field of the record. Unlike arrays, which store elements of the same data type, structures can store elements of different data types.</p>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Features of Structures:</h5>
+            <ul class="list-disc list-inside space-y-1 mb-4 text-sm md:text-base">
+                <li>Allows grouping of heterogeneous data types.</li>
+                <li>Members are stored in contiguous memory locations.</li>
+                <li>Each member has its own distinct memory location.</li>
+                <li>Can be passed to functions and returned from functions.</li>
+                <li>Can contain other structures (nested structures).</li>
+            </ul>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Declaration of Structures:</h5>
+            <p class="mb-2">A structure is declared using the <code>struct</code> keyword, followed by a tag name (optional) and a list of members enclosed in curly braces.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+struct Student {
+    char name[50];
+    int roll_no;
+    float marks;
+}; // Don't forget the semicolon!
+                </code></pre>
+                <p class="mt-2">This declares a structure named <code>Student</code>. It does not allocate memory; it just defines a blueprint.</p>
+            </div>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Initialization of Structure Variables:</h5>
+            <p class="mb-2">Structure variables can be declared and initialized in several ways:</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt; // For strcpy
+
+struct Student {
+    char name[50];
+    int roll_no;
+    float marks;
+};
+
+int main() {
+    // Method 1: Declare and initialize at the same time
+    struct Student s1 = {"Alice", 101, 85.5};
+
+    // Method 2: Declare first, then initialize members
+    struct Student s2;
+    strcpy(s2.name, "Bob");
+    s2.roll_no = 102;
+    s2.marks = 90.0;
+
+    printf("Student 1: Name = %s, Roll No = %d, Marks = %.2f\n", s1.name, s1.roll_no, s1.marks);
+    printf("Student 2: Name = %s, Roll No = %d, Marks = %.2f\n", s2.name, s2.roll_no, s2.marks);
+
+    return 0;
+}
+                </code></pre>
+            </div>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Accessing Structure Members:</h5>
+            <p class="mb-2">Members of a structure are accessed using the dot (<code>.</code>) operator.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+// From the previous example:
+s1.name;    // Accesses the 'name' member of s1
+s2.roll_no; // Accesses the 'roll_no' member of s2
+                </code></pre>
+            </div>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Array of Structures:</h5>
+            <p class="mb-2">You can create an array of structures, where each element of the array is a structure variable. This is useful for managing a collection of records.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Book {
+    char title[100];
+    char author[50];
+    float price;
+};
+
+int main() {
+    // Declare an array of 3 Book structures
+    struct Book library[3];
+
+    // Initialize individual structure elements in the array
+    strcpy(library[0].title, "The Great Gatsby");
+    strcpy(library[0].author, "F. Scott Fitzgerald");
+    library[0].price = 15.99;
+
+    strcpy(library[1].title, "1984");
+    strcpy(library[1].author, "George Orwell");
+    library[1].price = 12.50;
+
+    strcpy(library[2].title, "To Kill a Mockingbird");
+    strcpy(library[2].author, "Harper Lee");
+    library[2].price = 10.75;
+
+    // Access and print information for each book
+    printf("Library Books:\n");
+    for (int i = 0; i < 3; i++) {
+        printf("Book %d:\n", i + 1);
+        printf("  Title: %s\n", library[i].title);
+        printf("  Author: %s\n", library[i].author);
+        printf("  Price: $%.2f\n", library[i].price);
+    }
+
+    return 0;
+}
+                </code></pre>
+            </div>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Nested Structures:</h5>
+            <p class="mb-2">A structure can contain another structure as its member. This is known as nested structures, useful for creating more complex data hierarchies.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+struct Employee {
+    char name[50];
+    int id;
+    struct Date dob; // Nested structure
+};
+
+int main() {
+    struct Employee emp1;
+
+    strcpy(emp1.name, "John Doe");
+    emp1.id = 12345;
+    emp1.dob.day = 15;
+    emp1.dob.month = 8;
+    emp1.dob.year = 1990;
+
+    printf("Employee Name: %s\n", emp1.name);
+    printf("Employee ID: %d\n", emp1.id);
+    printf("Date of Birth: %d/%d/%d\n", emp1.dob.day, emp1.dob.month, emp1.dob.year);
+
+    return 0;
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">b. Unions (<code>union</code>)</h4>
+            <p class="mb-2">A union is a special data type that allows different data types to be stored in the same memory location. It can hold only one member's value at a time. The size of a union is equal to the size of its largest member.</p>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Features of Unions:</h5>
+            <ul class="list-disc list-inside space-y-1 mb-4 text-sm md:text-base">
+                <li>All members share the same memory location.</li>
+                <li>Only one member can hold a value at any given time.</li>
+                <li>Memory efficient, as it reuses the same memory for different members.</li>
+                <li>Useful when you need to store different types of data in the same memory space, but only one at a time.</li>
+            </ul>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Declaration and Initialization of Unions:</h5>
+            <p class="mb-2">A union is declared using the <code>union</code> keyword, similar to structures.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+union Data {
+    int i;
+    float f;
+    char str[20];
+}; // Don't forget the semicolon!
+                </code></pre>
+                <p class="mt-2">To initialize, you can assign a value to one of its members. Be cautious, as assigning a value to one member will overwrite the value of any previously assigned member.</p>
+            </div>
+
+            <h5 class="text-md md:text-lg font-medium text-blue-500 mb-2">Example: Using Union</h5>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <pre><code class="language-c text-sm md:text-base">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+
+    data.i = 10;
+    printf("data.i : %d\n", data.i); // Output: 10
+
+    data.f = 220.5;
+    printf("data.f : %f\n", data.f); // Output: 220.500000
+    // Note: data.i will now contain garbage value as 'f' overwrote the memory
+
+    strcpy(data.str, "C Programming");
+    printf("data.str : %s\n", data.str); // Output: C Programming
+    // Note: data.i and data.f will now contain garbage values
+
+    // To demonstrate how only one member is valid at a time:
+    printf("\nDemonstrating one member at a time:\n");
+    data.i = 100;
+    printf("After assigning data.i = 100:\n");
+    printf("data.i : %d\n", data.i);
+    printf("data.f : %f (garbage)\n", data.f);
+    printf("data.str : %s (garbage)\n", data.str);
+
+    return 0;
+}
+                </code></pre>
+            </div>
+
+            <h4 class="text-lg md:text-xl font-medium text-blue-600 mb-3">c. Difference between Structures and Unions</h4>
+            <p class="mb-2">While both structures and unions allow grouping of different data types, they differ significantly in memory allocation and usage.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 overflow-x-auto shadow-sm">
+                <table class="w-full text-sm md:text-base">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Structure</th>
+                            <th>Union</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Keyword</strong></td>
+                            <td><code>struct</code></td>
+                            <td><code>union</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Memory Allocation</strong></td>
+                            <td>Each member has its own unique memory location.</td>
+                            <td>All members share the same memory location.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Size</strong></td>
+                            <td>Sum of the sizes of all its members (plus padding).</td>
+                            <td>Size of its largest member.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Value Storage</strong></td>
+                            <td>All members can hold values simultaneously.</td>
+                            <td>Only one member can hold a value at any given time.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accessing Members</strong></td>
+                            <td>All members can be accessed at any time.</td>
+                            <td>Only the member whose value was most recently set can be accessed reliably.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Usage</strong></td>
+                            <td>Used when you need to store different types of data for a single entity where all data is relevant simultaneously (e.g., student record).</td>
+                            <td>Used when you need to store different types of data in the same memory space, but only one type is relevant at a time (e.g., a variant type).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-blue-900 text-white text-center py-4 mt-8 shadow-inner">
+        <p class="text-sm">&copy; Work of Pranjal Khatri 024neb929.</p>
+    </footer>
+
+</body>
+</html>
 
