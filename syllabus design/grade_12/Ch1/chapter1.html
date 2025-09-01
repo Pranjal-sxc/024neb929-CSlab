@@ -239,35 +239,70 @@
             <td>Robust access controls and security mechanisms</td>
         </tr>
     </table>
+<section>
+    <h2>3 ) Types of Database Models</h2>
+    <p>
+        Database models define the logical design and structure of a database. They specify how data is stored, 
+        related, and manipulated. The following are the most common types of database models:
+    </p>
 
-    <h2>3. Different Models of DBMS with Advantages and Disadvantages</h2>
-    <h3>Hierarchical Model</h3>
-    <p>Data is organized in a tree-like structure with parent-child relationships.</p>
+    <h3>1. Hierarchical Model</h3>
+    <p>
+        The hierarchical model organizes data into a tree-like structure, where each parent node can have multiple 
+        child nodes, but each child has only one parent. It is suitable for representing data with a clear hierarchy, 
+        such as organizational charts or file systems.
+    </p>
     <ul>
-        <li><strong>Advantages:</strong> Simple to understand and implement; fast for hierarchical data.</li>
-        <li><strong>Disadvantages:</strong> Rigid structure; difficult to handle many-to-many relationships.</li>
+        <li>Data is stored in records connected by parent–child relationships.</li>
+        <li>Supports one-to-many relationships.</li>
+        <li>Navigation is fast but rigid, as relationships are predefined.</li>
     </ul>
+    <img src="https://cdn.prod.website-files.com/6064b31ff49a2d31e0493af1/689a4893bbd6eb80a57fcb9a_674edbeac707e6fbef6eb561_AD_4nXdBPFPVx6dt5SpfGAXWJR5N_KCSwBgGzjxlSLfZwi7CEPq4NpnYxuh4FK8OvcdTvM0zcVOmcx7AFctw_m8NLpXJ0QDPL3MWMPVd54Hwl4Y1n5aP-tUqhU5_QxqNbXWIlnjOXBdOaQ.png" 
+         alt="Hierarchical Database Model" style="max-width: 80%; height: auto; display: block; margin: 10px auto;">
 
-    <h3>Network Model</h3>
-    <p>Data is represented as a graph allowing multiple parent-child relationships.</p>
+    <h3>2. Network Model</h3>
+    <p>
+        The network model represents data using nodes and set structures. Unlike the hierarchical model, a child 
+        (called a member) can have multiple parents, supporting many-to-many relationships. This model is more 
+        flexible for complex applications.
+    </p>
     <ul>
-        <li><strong>Advantages:</strong> More flexible than hierarchical; supports many-to-many relationships.</li>
-        <li><strong>Disadvantages:</strong> Complex design and management; difficult to query.</li>
+        <li>Data is organized as records connected by links (pointers).</li>
+        <li>Supports many-to-many relationships.</li>
+        <li>Efficient for complex queries but harder to design and maintain.</li>
     </ul>
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.briefmenow.org%2Fisaca%2Fcisa-part-in-which-of-the-following-database-models-is-the-data-represented-in-terms-of-tulles-and-grouped-into-relations%2F&psig=AOvVaw195Ve3slvtN1bL1htfCdjl&ust=1756805909777000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOjEv4Kjt48DFQAAAAAdAAAAABAc" 
+         alt="Network Database Model" style="max-width: 80%; height: auto; display: block; margin: 10px auto;">
 
-    <h3>Relational Model</h3>
-    <p>Data is organized in tables (relations) with rows and columns.</p>
+    <h3>3. Relational Model</h3>
+    <p>
+        The relational model organizes data into tables (relations) made of rows (tuples) and columns (attributes). 
+        Relationships between tables are established using keys. This is the most widely used model in modern 
+        database systems.
+    </p>
     <ul>
-        <li><strong>Advantages:</strong> Simple tabular structure; powerful and flexible querying (SQL); widely used.</li>
-        <li><strong>Disadvantages:</strong> Can be less efficient for complex hierarchical data.</li>
+        <li>Data is stored in two-dimensional tables.</li>
+        <li>Supports powerful querying using SQL.</li>
+        <li>Offers flexibility, simplicity, and scalability.</li>
     </ul>
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pragimtech.com%2Fblog%2Fmongodb-tutorial%2Frelational-and-non-relational-databases%2F&psig=AOvVaw36KzSg6V7G1znWr-8bpq3G&ust=1756806011728000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJD9h7Kjt48DFQAAAAAdAAAAABAE" 
+         alt="Relational Database Model" style="max-width: 80%; height: auto; display: block; margin: 10px auto;">
 
-    <h3>Entity-Relationship Model</h3>
-    <p>Conceptual data model representing entities and their relationships.</p>
+    <h3>4. Entity-Relational Model (ER Model)</h3>
+    <p>
+        The Entity-Relational (ER) model represents the database in terms of entities, attributes, and relationships. 
+        It is often used at the design stage to model real-world concepts before implementation in a relational 
+        database.
+    </p>
     <ul>
-        <li><strong>Advantages:</strong> Good for designing database schemas; easy visualization.</li>
-        <li><strong>Disadvantages:</strong> Abstract model, not used directly for database storage.</li>
+        <li>Entities represent real-world objects (e.g., Student, Course).</li>
+        <li>Attributes describe properties of entities (e.g., Name, Age).</li>
+        <li>Relationships define associations between entities (e.g., Enrolled-In).</li>
     </ul>
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEntity%25E2%2580%2593relationship_model&psig=AOvVaw113WICwqcsFGYMkcxattVw&ust=1756806128535000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPCZve2jt48DFQAAAAAdAAAAABAE" 
+         alt="Entity Relational Database Model" style="max-width: 80%; height: auto; display: block; margin: 10px auto;">
+</section>
+
 
     <h2>4. What is a Relational Database? How is it Different?</h2>
     <p>A <strong>relational database</strong> stores data in tables (relations) with rows (tuples) and columns (attributes). Each table has a primary key to uniquely identify rows.</p>
@@ -1032,4 +1067,5 @@ WHERE Id = 3;
 
 </body>
 </html>
+
 
