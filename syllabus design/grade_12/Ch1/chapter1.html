@@ -366,6 +366,119 @@
         <li>Troubleshooting database issues.</li>
     </ul>
 
+    <section>
+    <h2>Integrity Constraints and Their Types</h2>
+    <p>
+        Integrity constraints are the rules that ensure the accuracy, validity, and consistency of data in a database. 
+        They act as a safeguard to prevent invalid or inconsistent data from being entered or maintained in the system. 
+        Without integrity constraints, databases would quickly become unreliable, as users could insert contradictory or incomplete information. 
+        These rules are enforced by the DBMS automatically whenever data is inserted, updated, or deleted.
+    </p>
+    <p>
+        In essence, integrity constraints maintain the quality of the data and preserve the logical relationships between tables. 
+        They are one of the key reasons why databases are more reliable than traditional file systems.
+    </p>
+
+    <h3>Types of Integrity Constraints</h3>
+
+    <h4>1. Domain Integrity Constraint</h4>
+    <p>
+        Domain constraints define the <b>valid set of values</b> for an attribute (column). They restrict the type, format, and permissible range of values that can be stored in a column. 
+        For example, the column <code>Age</code> should only accept positive integers, and the column <code>Email</code> should follow the email format.
+    </p>
+    <ul>
+        <li>Specifies the data type (e.g., integer, char, date).</li>
+        <li>Restricts the range (e.g., marks between 0 and 100).</li>
+        <li>Ensures values are meaningful and within expected bounds.</li>
+    </ul>
+    <pre><code>
+    CREATE TABLE Students (
+        StudentID INT PRIMARY KEY,
+        Name VARCHAR(50) NOT NULL,
+        Age INT CHECK (Age > 0 AND Age < 120)
+    );
+    </code></pre>
+    <p><i>Here, the domain constraint ensures that Age must always be between 1 and 119.</i></p>
+
+    <h4>2. Entity Integrity Constraint</h4>
+    <p>
+        Entity integrity ensures that every table has a unique identifier (primary key) and that this key value is never <b>NULL</b>. 
+        It guarantees that each record (row) can be uniquely identified within the table. 
+        Without this, it would be impossible to distinguish between two rows of data.
+    </p>
+    <ul>
+        <li>Each table must have a primary key.</li>
+        <li>The primary key column(s) cannot contain <code>NULL</code>.</li>
+        <li>No two rows can have the same primary key value.</li>
+    </ul>
+    <pre><code>
+    CREATE TABLE Employees (
+        EmpID INT PRIMARY KEY,
+        Name VARCHAR(50),
+        Department VARCHAR(50)
+    );
+    </code></pre>
+    <p><i>The primary key <code>EmpID</code> ensures every employee record is unique and identifiable.</i></p>
+
+    <h4>3. Referential Integrity Constraint</h4>
+    <p>
+        Referential integrity maintains consistency between related tables through the use of <b>foreign keys</b>. 
+        It ensures that a value in a child table must correspond to an existing value in the parent table or be <code>NULL</code> (if allowed). 
+        This prevents the creation of "orphan" records.
+    </p>
+    <ul>
+        <li>Defined using foreign keys.</li>
+        <li>Ensures that relationships between tables remain valid.</li>
+        <li>Prevents deletion of a parent record if matching child records exist (unless cascading is defined).</li>
+    </ul>
+    <pre><code>
+    CREATE TABLE Departments (
+        DeptID INT PRIMARY KEY,
+        DeptName VARCHAR(50)
+    );
+
+    CREATE TABLE Employees (
+        EmpID INT PRIMARY KEY,
+        Name VARCHAR(50),
+        DeptID INT,
+        FOREIGN KEY (DeptID) REFERENCES Departments(DeptID)
+    );
+    </code></pre>
+    <p><i>Here, every employee must be assigned to a valid department. If DeptID = 5 does not exist in Departments, it cannot be inserted into Employees.</i></p>
+
+    <h4>4. Key Integrity Constraint</h4>
+    <p>
+        Key constraints enforce the uniqueness and proper identification of rows within a table. 
+        They define which attribute(s) can be used as keys and how they enforce uniqueness across records.
+    </p>
+    <ul>
+        <li><b>Primary Key:</b> Uniquely identifies each record, not NULL.</li>
+        <li><b>Unique Key:</b> Ensures uniqueness of values but allows one NULL.</li>
+        <li><b>Candidate Key:</b> A set of attributes that can uniquely identify records. One is chosen as the primary key.</li>
+        <li><b>Foreign Key:</b> Links one table to another, ensuring referential integrity.</li>
+    </ul>
+    <pre><code>
+    CREATE TABLE Users (
+        UserID INT PRIMARY KEY,
+        Username VARCHAR(50) UNIQUE,
+        Email VARCHAR(100) UNIQUE
+    );
+    </code></pre>
+    <p><i>Here, <code>UserID</code> is the primary key, while <code>Username</code> and <code>Email</code> must be unique for each user.</i></p>
+
+    <h3>Why Integrity Constraints Matter?</h3>
+    <p>
+        Integrity constraints form the backbone of reliable databases:
+    </p>
+    <ul>
+        <li>Prevent invalid, inconsistent, and duplicate data.</li>
+        <li>Ensure logical correctness of relationships between tables.</li>
+        <li>Protect data from accidental corruption during insert, update, or delete operations.</li>
+        <li>Maintain trust in the database for decision-making and operations.</li>
+    </ul>
+</section>
+
+
     <h2>8. Normalization: Definition and Normal Forms</h2>
     <p><strong>Normalization</strong> is the process of organizing data in a database to reduce redundancy and improve data integrity.</p>
     <h3>First Normal Form (1NF):</h3>
@@ -1067,6 +1180,7 @@ WHERE Id = 3;
 
 </body>
 </html>
+
 
 
 
