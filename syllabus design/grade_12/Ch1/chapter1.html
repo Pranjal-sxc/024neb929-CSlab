@@ -583,6 +583,136 @@ AdvisorID | AdvisorName
     </p>
 </section>
 
+    <section>
+    <h2>Centralized and Distributed Database</h2>
+    
+    <h3>Introduction</h3>
+    <p>
+        A <b>Centralized Database</b> is stored and maintained in a single location, usually a central computer or server. 
+        All users access the database through this central system.  
+        In contrast, a <b>Distributed Database</b> is spread across multiple locations (servers or sites), but the data 
+        appears as a single logical database to users. Both approaches have their own strengths and weaknesses depending 
+        on system requirements.
+    </p>
+
+    <div style="text-align:center; margin: 20px 0;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209072.png" alt="Centralized Database Diagram" style="max-width:450px; width:100%; height:auto; margin:10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/3209/3209063.png" alt="Distributed Database Diagram" style="max-width:450px; width:100%; height:auto; margin:10px;">
+    </div>
+
+    <h3>Advantages of Centralized Database</h3>
+    <ul>
+        <li><b>Data Consistency:</b> All data is stored in one place, ensuring consistency and reliability.</li>
+        <li><b>Easy Maintenance:</b> Administration, updates, and backups are easier since everything is in one location.</li>
+        <li><b>Cost-Effective:</b> Requires fewer resources compared to distributed systems.</li>
+        <li><b>Better Security Control:</b> Since data is stored centrally, it is easier to implement strict security policies.</li>
+    </ul>
+
+    <h3>Disadvantages of Centralized Database</h3>
+    <ul>
+        <li><b>Single Point of Failure:</b> If the central server fails, the entire system becomes unavailable.</li>
+        <li><b>Scalability Issues:</b> Handling a growing number of users and data can overwhelm the central system.</li>
+        <li><b>Performance Bottlenecks:</b> High traffic can lead to slower response times.</li>
+        <li><b>Limited Availability:</b> Remote users may face latency due to distance from the central server.</li>
+    </ul>
+
+    <h3>Advantages of Distributed Database</h3>
+    <ul>
+        <li><b>Reliability:</b> If one site fails, others can continue functioning, improving fault tolerance.</li>
+        <li><b>Improved Performance:</b> Data is stored closer to users, reducing access time.</li>
+        <li><b>Scalability:</b> New sites can be added easily without affecting existing operations.</li>
+        <li><b>Local Autonomy:</b> Each site can manage its own data while still being part of the overall system.</li>
+    </ul>
+
+    <h3>Disadvantages of Distributed Database</h3>
+    <ul>
+        <li><b>Complex Management:</b> Maintaining synchronization and consistency across multiple sites is difficult.</li>
+        <li><b>High Cost:</b> Setting up and managing multiple servers is more expensive.</li>
+        <li><b>Security Challenges:</b> Multiple access points increase the risk of breaches.</li>
+        <li><b>Data Redundancy:</b> May require replication of data, leading to higher storage needs.</li>
+    </ul>
+
+    <h3>Comparison</h3>
+    <table border="1" cellspacing="0" cellpadding="8" style="width:100%; border-collapse:collapse; text-align:left;">
+        <tr>
+            <th>Aspect</th>
+            <th>Centralized Database</th>
+            <th>Distributed Database</th>
+        </tr>
+        <tr>
+            <td><b>Storage Location</b></td>
+            <td>Single central server</td>
+            <td>Multiple servers/sites</td>
+        </tr>
+        <tr>
+            <td><b>Reliability</b></td>
+            <td>Low – single point of failure</td>
+            <td>High – continues even if one site fails</td>
+        </tr>
+        <tr>
+            <td><b>Performance</b></td>
+            <td>May face bottlenecks with many users</td>
+            <td>Faster as data is distributed closer to users</td>
+        </tr>
+        <tr>
+            <td><b>Maintenance</b></td>
+            <td>Easy, centralized control</td>
+            <td>Complex, requires coordination across sites</td>
+        </tr>
+        <tr>
+            <td><b>Cost</b></td>
+            <td>Cheaper to implement</td>
+            <td>Expensive due to multiple sites</td>
+        </tr>
+        <tr>
+            <td><b>Security</b></td>
+            <td>Easier to enforce</td>
+            <td>Harder, multiple entry points</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Database Security</h2>
+    
+    <h3>Introduction</h3>
+    <p>
+        Database Security refers to the collective measures used to protect the database against threats such as 
+        unauthorized access, data breaches, corruption, or loss. Since databases often store critical and sensitive 
+        information (such as financial records, personal data, and business transactions), ensuring their security is 
+        a top priority.
+    </p>
+
+    <h3>Challenges in Database Security</h3>
+    <ul>
+        <li><b>Unauthorized Access:</b> Hackers or malicious users may try to gain illegal access to sensitive data.</li>
+        <li><b>SQL Injection Attacks:</b> Attackers exploit poorly written queries to manipulate or steal data.</li>
+        <li><b>Insider Threats:</b> Authorized users misusing their privileges to harm the system.</li>
+        <li><b>Data Corruption:</b> Software bugs, malware, or faulty processes can lead to loss of data integrity.</li>
+        <li><b>Weak Authentication:</b> Poor password management and weak user authentication increase risks.</li>
+        <li><b>Backup Vulnerabilities:</b> Insecure storage of backups may expose sensitive data.</li>
+    </ul>
+
+    <h3>Security Measures</h3>
+    <ul>
+        <li><b>User Authentication and Authorization:</b> Ensuring that only verified users access the database, with proper role-based permissions.</li>
+        <li><b>Encryption:</b> Encrypting data both at rest and in transit to prevent unauthorized reading of sensitive information.</li>
+        <li><b>Firewalls and Network Security:</b> Protecting the database from external attacks using firewalls, intrusion detection, and VPNs.</li>
+        <li><b>Regular Backups:</b> Maintaining encrypted backups to prevent permanent data loss.</li>
+        <li><b>Audit Trails:</b> Keeping detailed logs of user activities to detect and prevent suspicious behavior.</li>
+        <li><b>SQL Injection Prevention:</b> Using prepared statements and parameterized queries to prevent injection attacks.</li>
+        <li><b>Patch Management:</b> Keeping database software updated to protect against known vulnerabilities.</li>
+        <li><b>Access Control Policies:</b> Defining strict policies to limit who can view, modify, or delete data.</li>
+    </ul>
+
+    <p>
+        Effective database security is a continuous process that combines <b>technical measures</b> (like encryption and firewalls), 
+        <b>administrative policies</b> (like role-based access), and <b>regular monitoring</b> to safeguard valuable data against 
+        both internal and external threats.
+    </p>
+</section>
+
+
 
     <h2>9. Keys in DBMS</h2>
     <h3>Primary Key</h3>
@@ -1217,6 +1347,7 @@ WHERE Id = 3;
 
 </body>
 </html>
+
 
 
 
