@@ -860,6 +860,90 @@ AdvisorID | AdvisorName
         <li><strong>Roles of DBA:</strong> Install/upgrade DBMS, manage security, backup/recovery</li>
     </ul>
 
+    <section>
+    <h2>Entity-Relationship (ER) Diagrams</h2>
+    <p>
+        An <b>Entity-Relationship (ER) Diagram</b> is a visual representation of entities, attributes, and the relationships 
+        among them in a database system. ER Diagrams are widely used during the database design phase because they provide 
+        a clear and structured way to represent data requirements. They serve as a blueprint for creating relational databases.
+    </p>
+
+    <h3>Entities</h3>
+    <p>
+        An <b>Entity</b> represents a real-world object or concept that can be identified distinctly in the database. 
+        Entities can be physical objects (like <i>Student, Book, Employee</i>) or abstract concepts (like <i>Course, Department</i>). 
+        In ER diagrams, entities are usually represented by rectangles.
+    </p>
+    <ul>
+        <li><b>Strong Entity:</b> Has a primary key that uniquely identifies its instances (e.g., Student).</li>
+        <li><b>Weak Entity:</b> Cannot be uniquely identified by its attributes alone; depends on a strong entity (e.g., Dependent of Employee).</li>
+    </ul>
+
+    <h3>Attributes</h3>
+    <p>
+        An <b>Attribute</b> describes a property or characteristic of an entity. For example, the entity <i>Student</i> 
+        may have attributes like <i>Student_ID, Name, Age, Address</i>. Attributes are represented by ellipses (ovals) 
+        in ER diagrams and connected to their entities.
+    </p>
+    <ul>
+        <li><b>Simple Attribute:</b> Cannot be divided further (e.g., Age).</li>
+        <li><b>Composite Attribute:</b> Can be broken down into sub-parts (e.g., Name → First Name, Last Name).</li>
+        <li><b>Derived Attribute:</b> Value can be derived from other attributes (e.g., Age derived from Date of Birth).</li>
+        <li><b>Multivalued Attribute:</b> Can have multiple values for a single entity (e.g., Phone Numbers).</li>
+    </ul>
+
+    <h3>Relationships</h3>
+    <p>
+        A <b>Relationship</b> shows how entities are connected to each other. For example, a <i>Student</i> <b>enrolls in</b> a <i>Course</i>. 
+        Relationships are represented by diamonds in ER diagrams.
+    </p>
+    <ul>
+        <li><b>One-to-One (1:1):</b> A single entity instance in set A is related to a single entity instance in set B.</li>
+        <li><b>One-to-Many (1:N):</b> A single entity instance in set A is related to multiple instances in set B.</li>
+        <li><b>Many-to-Many (M:N):</b> Multiple entity instances in set A are related to multiple instances in set B.</li>
+    </ul>
+
+    <h3>Cardinality and Degree</h3>
+    <p>
+        <b>Cardinality</b> defines the number of instances of one entity that can be associated with instances of another entity 
+        (e.g., 1:1, 1:N, M:N).  
+        <b>Degree</b> of a relationship represents the number of entities involved in the relationship:
+    </p>
+    <ul>
+        <li><b>Unary Relationship:</b> Involves one entity set (e.g., Employee supervises Employee).</li>
+        <li><b>Binary Relationship:</b> Involves two entities (e.g., Student enrolls in Course).</li>
+        <li><b>Ternary Relationship:</b> Involves three entities (e.g., Doctor prescribes Medicine to Patient).</li>
+    </ul>
+
+    <h3>Symbols in ER Diagrams</h3>
+    <p>
+        ER Diagrams use a standard set of symbols to represent entities, attributes, and relationships. Below are the most common symbols:
+    </p>
+    <dl>
+        <dt><b>Rectangle:</b></dt>
+        <dd>Represents an Entity.</dd>
+
+        <dt><b>Double Rectangle:</b></dt>
+        <dd>Represents a Weak Entity.</dd>
+
+        <dt><b>Ellipse (Oval):</b></dt>
+        <dd>Represents an Attribute.</dd>
+
+        <dt><b>Double Ellipse:</b></dt>
+        <dd>Represents a Multivalued Attribute.</dd>
+
+        <dt><b>Dashed Ellipse:</b></dt>
+        <dd>Represents a Derived Attribute.</dd>
+
+        <dt><b>Diamond:</b></dt>
+        <dd>Represents a Relationship.</dd>
+
+        <dt><b>Line:</b></dt>
+        <dd>Connects entities with relationships or attributes.</dd>
+    </dl>
+        
+</section>
+
     <h2>Practical Topics: DDL and DML</h2>
     <ul>
         <li><strong>DDL (Data Definition Language):</strong> CREATE, ALTER, DROP, TRUNCATE</li>
@@ -997,6 +1081,8 @@ AdvisorID | AdvisorName
   <li>It supports automation, reporting, analytics, and system integration.</li>
   <li>Understanding SQL is critical for working with structured data efficiently and accurately.</li>
 </ul>
+
+    
 
 
 <h3>SQL Commands to Perform Operations</h3>
@@ -1209,6 +1295,80 @@ WHERE Id = 3;
   }
 </style>
 
+    <section>
+    <h2>SQL JOIN</h2>
+    <p>
+        <b>JOIN</b> operations in SQL are used to combine rows from two or more tables based on a related column 
+        between them. They are essential for retrieving data that is spread across multiple tables in a relational database.
+    </p>
+
+    <h3>1. INNER JOIN</h3>
+    <p>
+        The <b>INNER JOIN</b> returns records that have matching values in both tables. 
+        Rows without matches are excluded from the result.
+    </p>
+    <pre><code>
+-- Example:
+SELECT Students.StudentID, Students.Name, Courses.CourseName
+FROM Students
+INNER JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+    <p><i>Explanation:</i> This query returns only students who are enrolled in a course (matching CourseID in both tables).</p>
+
+    <h3>2. LEFT JOIN (LEFT OUTER JOIN)</h3>
+    <p>
+        The <b>LEFT JOIN</b> returns all records from the left table, and the matched records from the right table. 
+        If no match is found, NULL values are returned for columns from the right table.
+    </p>
+    <pre><code>
+-- Example:
+SELECT Students.StudentID, Students.Name, Courses.CourseName
+FROM Students
+LEFT JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+    <p><i>Explanation:</i> This query shows all students, even if they are not enrolled in any course. For those students, CourseName will be NULL.</p>
+
+    <h3>3. RIGHT JOIN (RIGHT OUTER JOIN)</h3>
+    <p>
+        The <b>RIGHT JOIN</b> returns all records from the right table, and the matched records from the left table. 
+        If no match is found, NULL values are returned for columns from the left table.
+    </p>
+    <pre><code>
+-- Example:
+SELECT Students.StudentID, Students.Name, Courses.CourseName
+FROM Students
+RIGHT JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+    <p><i>Explanation:</i> This query shows all courses, even if no student is enrolled in them. For such courses, StudentID and Name will be NULL.</p>
+
+    <h3>4. FULL JOIN (FULL OUTER JOIN)</h3>
+    <p>
+        The <b>FULL JOIN</b> returns all records when there is a match in either left or right table. 
+        If there is no match, NULL values are returned from the missing side.
+    </p>
+    <pre><code>
+-- Example:
+SELECT Students.StudentID, Students.Name, Courses.CourseName
+FROM Students
+FULL OUTER JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+    <p><i>Explanation:</i> This query shows all students and all courses. 
+    If a student is not enrolled in any course, CourseName will be NULL. 
+    If a course has no students, StudentID and Name will be NULL.</p>
+
+    <h3>Conclusion</h3>
+    <p>
+        SQL JOINs allow us to query and analyze data across multiple tables efficiently. 
+        Choosing the right type of JOIN depends on whether we want only matched records 
+        (INNER JOIN) or unmatched records as well (LEFT, RIGHT, FULL JOIN).
+    </p>
+</section>
+
+
     <h2>Learning Outcomes</h2>
     <ul>
         <li>Understand fundamental database concepts and terminologies</li>
@@ -1347,6 +1507,7 @@ WHERE Id = 3;
 
 </body>
 </html>
+
 
 
 
