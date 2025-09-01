@@ -547,6 +547,43 @@ AdvisorID | AdvisorName
 11        | Dr. Jones
     </pre>
 
+    <section>
+    <h2>Advantages and Disadvantages of Normalization</h2>
+    <p>
+        Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. 
+        It involves dividing large, complex tables into smaller, well-structured tables connected through relationships. 
+        While normalization improves efficiency and accuracy, it also comes with certain trade-offs. 
+        Understanding its pros and cons is essential for designing an effective database.
+    </p>
+
+    <h3>Advantages of Normalization</h3>
+    <ul>
+        <li><b>Reduces Data Redundancy:</b> Prevents the storage of the same piece of information in multiple places, saving space and ensuring consistency.</li>
+        <li><b>Improves Data Integrity:</b> Changes made in one place are automatically reflected everywhere, minimizing anomalies during updates, insertions, or deletions.</li>
+        <li><b>Easier Maintenance:</b> With smaller, organized tables, modifying, updating, or extending the database is simpler and less error-prone.</li>
+        <li><b>Better Data Consistency:</b> Since each fact is stored only once, data remains consistent across the database.</li>
+        <li><b>Efficient Query Processing:</b> Properly normalized databases often perform faster in read/write operations because there is less redundant data to scan.</li>
+        <li><b>Logical Clarity:</b> Relationships between entities become clear, improving database design and understanding for developers and analysts.</li>
+    </ul>
+
+    <h3>Disadvantages of Normalization</h3>
+    <ul>
+        <li><b>Complex Queries:</b> Since data is spread across multiple tables, retrieving information often requires complex joins, making queries harder to write and slower in some cases.</li>
+        <li><b>Performance Overhead:</b> Too much normalization can slow down query performance, especially in large databases, due to frequent table joins.</li>
+        <li><b>Initial Design Complexity:</b> Designing a highly normalized database requires deep understanding of entities, relationships, and dependencies, which can be time-consuming.</li>
+        <li><b>Difficult for Beginners:</b> For new learners or non-technical users, normalized designs may appear complicated compared to flat, single tables.</li>
+        <li><b>Not Always Suitable:</b> In analytical databases or systems where speed is more important than consistency (like data warehouses), excessive normalization can be a drawback.</li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>
+        Normalization is a powerful technique for ensuring data accuracy and reducing redundancy, making it an essential step in designing reliable transactional databases. 
+        However, it should be applied wisely, balancing between <b>data consistency</b> and <b>system performance</b>. 
+        In practice, databases often use partial normalization (up to 3NF or BCNF) while denormalizing selectively for performance optimization.
+    </p>
+</section>
+
+
     <h2>9. Keys in DBMS</h2>
     <h3>Primary Key</h3>
     <p>A unique identifier for each record in a table. It cannot be null.</p>
@@ -1180,6 +1217,7 @@ WHERE Id = 3;
 
 </body>
 </html>
+
 
 
 
