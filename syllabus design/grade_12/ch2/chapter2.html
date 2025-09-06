@@ -1,867 +1,734 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chapter 2 · C Programming — Functions, Structures & Unions, Pointers, File Handling</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 2: C Programming Fundamentals - Grade 12</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #0077b6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #023e8a;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+        nav a:hover {
+            background-color: #0096c7;
+        }
+        .content {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            color: #0077b6;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #023e8a;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        ul li {
+            background: #e3f2fd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0077b6;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #023e8a;
+            color: white;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        /* Smaller indent for nested lists */
+        ul ul {
+            list-style-type: circle;
+        }
+        
+        /* Professional image styling */
+        img.professional-image {
+            max-width: 43.69%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+        }
+        
+        /* Code Block Styling */
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .active-link {
+            background-color: #0096c7;
+        }
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
-
-  <style>
-    :root { --accent: #2563eb; }
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; }
-    .prose pre { background: #0b1020; color: #e5e7eb; border-radius: 1rem; }
-    .code-card pre { background: #0b1020; color: #e5e7eb; }
-    .kbd { background:#111827; border:1px solid #374151; border-bottom-width:3px; border-radius:.5rem; padding:.1rem .4rem; font-weight:600; }
-    .toc-link.active { color: var(--accent); font-weight: 700; }
-    .shadow-soft { box-shadow: 0 10px 25px -15px rgba(2,6,23,.30), 0 20px 35px -25px rgba(2,6,23,.25); }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.95));
-      backdrop-filter: blur(6px);
-    }
-    .pill {
-      border: 1px solid rgba(37,99,235,.25);
-      background: rgba(37,99,235,.07);
-    }
-  </style>
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-2xl bg-blue-600 grid place-items-center text-white font-extrabold shadow-soft">C</div>
-        <div>
-          <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">C Programming — Functions, Structures, Pointers, File Handling</h1>
-          <p class="text-sm text-slate-500">NEB Class 12 · Chapter 2 · Same styling as previous chapters</p>
-        </div>
-      </div>
-      <a href="#top" class="hidden sm:inline-flex pill px-3 py-1.5 rounded-xl text-sm font-semibold text-blue-700 hover:bg-blue-50">Back to Top</a>
-    </div>
-  </header>
+<body>
 
-  <!-- Main -->
-  <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <!-- TOC -->
-      <aside class="lg:col-span-3">
-        <div class="card rounded-2xl p-5 border border-slate-200 shadow-soft sticky top-[92px]">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">On this page</h2>
-          <nav class="space-y-2 text-sm" id="toc">
-            <a class="block toc-link" href="#functions">Functions</a>
-            <div class="ml-3 space-y-1">
-              <a class="block toc-link" href="#func-intro">Introduction & Syntax</a>
-              <a class="block toc-link" href="#func-purpose">Purpose & Advantages</a>
-              <a class="block toc-link" href="#func-components">Components of a Function</a>
-              <a class="block toc-link" href="#func-prototype">Function Prototype</a>
-              <a class="block toc-link" href="#func-definition">Function Definition</a>
-              <a class="block toc-link" href="#func-call">Function Call</a>
-              <a class="block toc-link" href="#func-return">Return Statement</a>
-              <a class="block toc-link" href="#func-types">Types (Library & User-Defined)</a>
-              <a class="block toc-link" href="#passing-args">Passing Arguments</a>
-              <a class="block toc-link" href="#call-by-value">Call by Value</a>
-              <a class="block toc-link" href="#call-by-ref">Call by Reference</a>
-              <a class="block toc-link" href="#var-scope">Variable & Scope</a>
-              <a class="block toc-link" href="#storage-class">Storage Classes</a>
-              <a class="block toc-link" href="#func-array">Function with Array</a>
-              <a class="block toc-link" href="#recursion">Recursive Function</a>
-            </div>
+<header>
+    Chapter 2: C Programming Fundamentals - Grade 12
+</header>
 
-            <a class="block toc-link mt-3" href="#struct-union">Structure & Union</a>
-            <div class="ml-3 space-y-1">
-              <a class="block toc-link" href="#structure-intro">Structure: Introduction & Syntax</a>
-              <a class="block toc-link" href="#structure-size">Structure Size</a>
-              <a class="block toc-link" href="#structure-access">Accessing Members</a>
-              <a class="block toc-link" href="#nested-structure">Nested Structure</a>
-              <a class="block toc-link" href="#array-structure">Array of Structure</a>
-              <a class="block toc-link" href="#pass-struct-func">Passing Structure to Function</a>
-              <a class="block toc-link" href="#union-intro">Union: Introduction & Syntax</a>
-              <a class="block toc-link" href="#struct-vs-union">Structure vs Union</a>
-            </div>
+<nav>
+    <a href="chapter1.html">DBMS</a>
+    <a href="chapter2.html" class="active-link">C Programming</a>
+    <a href="#">Chapter 3</a>
+    <a href="#">Chapter 4</a>
+    <a href="#">Chapter 5</a>
+    <a href="#">Chapter 6</a>
+</nav>
 
-            <a class="block toc-link mt-3" href="#pointers">Pointers</a>
-            <div class="ml-3 space-y-1">
-              <a class="block toc-link" href="#pointers-intro">Introduction & Syntax</a>
-              <a class="block toc-link" href="#pointers-usage">Usage & Working</a>
-              <a class="block toc-link" href="#value-address">Concept of Value & Address</a>
-              <a class="block toc-link" href="#decl-init">Declaration & Initialization</a>
-              <a class="block toc-link" href="#pointer-function">Pointer & Function</a>
-              <a class="block toc-link" href="#ref-example">Call by Reference Example</a>
-              <a class="block toc-link" href="#value-vs-ref">Call by Value vs Call by Reference</a>
-              <a class="block toc-link" href="#pointer-arrays">Pointer with Arrays</a>
-              <a class="block toc-link" href="#ptr-adv-disadv">Advantages & Disadvantages</a>
-            </div>
+<div class="content">
 
-            <a class="block toc-link mt-3" href="#file-handling">File Handling</a>
-            <div class="ml-3 space-y-1">
-              <a class="block toc-link" href="#data-file">Concept of Data File & Need</a>
-              <a class="block toc-link" href="#file-types">Sequential & Random Files</a>
-              <a class="block toc-link" href="#file-functions">File Handling Functions (Purpose & Syntax)</a>
-              <a class="block toc-link" href="#random-access">Random Access Functions</a>
-            </div>
-          </nav>
-        </div>
-      </aside>
+    <h2>1. Functions in C</h2>
+    <p>A function is a block of code that performs a specific task. By dividing a complex program into smaller, manageable functions, it becomes easier to understand, debug, and maintain. Functions are a core part of modular programming in C.</p>
 
-      <!-- Content -->
-      <section class="lg:col-span-9 space-y-10 prose prose-slate max-w-none">
-        <!-- FUNCTIONS -->
-        <section id="functions" class="scroll-mt-28">
-          <h2 class="text-3xl font-extrabold">Functions</h2>
-          <p class="text-slate-600">Functions are reusable blocks of code that perform a specific task. They improve modularity, readability, and testability of programs.</p>
+    <h3>Introduction and Syntax</h3>
+    <p>A function in C consists of a declaration (prototype), a definition, and a call. It takes input (arguments), processes it, and returns an output.</p>
+    <pre><code>
+// Function Prototype (Declaration)
+returnType functionName(dataType parameter1, dataType parameter2, ...);
 
-          <div id="func-intro" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Introduction & Syntax</h3>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">General Syntax</h4>
-                <pre class="p-4 rounded-xl overflow-auto"><code>// return_type function_name(parameter_list);
-int add(int a, int b);
-
-// Definition
-int add(int a, int b) {
-    return a + b;
+// Function Definition
+returnType functionName(dataType parameter1, dataType parameter2, ...) {
+    // block of code to be executed
+    ...
+    return value; // Optional
 }
 
-// Call
-int s = add(3, 4);</code></pre>
-              </div>
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">Terminology</h4>
-                <ul class="list-disc pl-6">
-                  <li><span class="font-semibold">Return type</span>: data type of the value returned.</li>
-                  <li><span class="font-semibold">Name</span>: identifier of the function.</li>
-                  <li><span class="font-semibold">Parameters</span>: inputs (formal arguments).</li>
-                  <li><span class="font-semibold">Body</span>: statements that run when called.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+// Function Call
+result = functionName(argument1, argument2, ...);
+    </code></pre>
 
-          <div id="func-purpose" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Purpose & Advantages</h3>
-            <ul class="list-disc pl-6">
-              <li>Promotes <strong>code reuse</strong> and modular design.</li>
-              <li>Improves <strong>readability</strong> and <strong>maintainability</strong>.</li>
-              <li>Enables <strong>unit testing</strong> and <strong>team collaboration</strong>.</li>
-              <li>Reduces <strong>duplication</strong> and isolates <strong>complex logic</strong>.</li>
+    <h3>Purpose and Advantages of Functions</h3>
+    <ul>
+        <li><strong>Reusability:</strong> A function can be called multiple times from different parts of the program, reducing code duplication.</li>
+        <li><strong>Modularity:</strong> Breaks down a large program into smaller, independent modules, making the code easier to manage.</li>
+        <li><strong>Readability:</strong> Improves the clarity and organization of the code.</li>
+        <li><strong>Debugging:</strong> It is easier to identify and fix errors in smaller, isolated functions.</li>
+    </ul>
+
+    <h3>Components of a Function</h3>
+    <ul>
+        <li><strong>Function Prototype (Declaration):</strong> Informs the compiler about a function's name, return type, and parameters. It must be declared before the function is called.</li>
+        <li><strong>Function Definition:</strong> Contains the actual block of code for the function's task.</li>
+        <li><strong>Function Call:</strong> The statement that executes the function's code.</li>
+        <li><strong>Return Statement:</strong> Used to send a value back from the function to the calling part of the program.</li>
+    </ul>
+
+    <h3>Types of Functions</h3>
+    <p>Functions can be broadly categorized into two types:</p>
+    <ul>
+        <li><strong>Library Functions:</strong> Pre-defined functions available in C's standard library (e.g., <code>printf()</code>, <code>scanf()</code>, <code>sqrt()</code>). You just need to include the appropriate header file.</li>
+        <li><strong>User-Defined Functions:</strong> Functions created by the programmer to perform specific tasks.</li>
+    </ul>
+
+    <h3>Passing Arguments</h3>
+    <p>Arguments can be passed to functions in two main ways:</p>
+    <ul>
+        <li><strong>Call By Value:</strong> A copy of the argument's value is passed to the function. Any changes made to the parameter inside the function do not affect the original variable. </li>
+        <li><strong>Call By Reference:</strong> The address of the argument is passed. The function can then directly access and modify the original variable using this address. </li>
+    </ul>
+
+    <h3>Variable and its Scope</h3>
+    <p>The scope of a variable determines where it can be accessed within a program.</p>
+    <ul>
+        <li><strong>Local Variables:</strong> Declared inside a function or a block. They can only be accessed within that function or block.</li>
+        <li><strong>Global Variables:</strong> Declared outside all functions. They can be accessed from any function in the program.</li>
+    </ul>
+
+    <h3>Storage Classes</h3>
+    <p>Storage classes determine the scope, lifetime, and storage location of variables.</p>
+    <ul>
+        <li><strong>Automatic (<code>auto</code>):</strong> Default storage class for local variables. Stored on the stack. Life is limited to the function block.</li>
+        <li><strong>External (<code>extern</code>):</strong> Used to declare a global variable that is defined in another file. It extends the variable's visibility.</li>
+        <li><strong>Static (<code>static</code>):</strong> For local variables, it retains the value between function calls. For global variables, it limits visibility to the current file.</li>
+        <li><strong>Register (<code>register</code>):</strong> Suggests to the compiler to store the variable in a CPU register for faster access.</li>
+    </ul>
+
+    <h3>Function with Array Example</h3>
+    <p>To pass an array to a function, you pass the array's name, which decays into a pointer to its first element. The function can then access and modify the array's elements.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+void printArray(int arr[], int size) {
+    printf("Elements of array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int myArray[] = {10, 20, 30, 40, 50};
+    int n = sizeof(myArray) / sizeof(myArray[0]);
+    printArray(myArray, n);
+    return 0;
+}
+    </code></pre>
+
+    <h3>Recursive Function</h3>
+    <p>A recursive function is a function that calls itself. It is used to solve problems that can be broken down into smaller, self-similar sub-problems.</p>
+    <h4>Syntax:</h4>
+    <pre><code>
+void recursiveFunction() {
+    if (condition) {
+        // base case to stop recursion
+        return;
+    }
+    recursiveFunction(); // recursive call
+}
+    </code></pre>
+    <h4>Example: Factorial Calculation</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+long long factorial(int n) {
+    // Base case: to stop the recursion
+    if (n >= 1) {
+        return n * factorial(n - 1);
+    } else {
+        return 1;
+    }
+}
+
+int main() {
+    int number = 5;
+    printf("Factorial of %d = %lld\n", number, factorial(number));
+    return 0;
+}
+    </code></pre>
+    <h4>Advantages and Disadvantages of Recursion:</h4>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Code is often more elegant and shorter.</li>
+                <li>Reduces code size and improves readability.</li>
+                <li>Suitable for problems with a recursive nature (e.g., tree traversals, quicksort).</li>
             </ul>
-          </div>
-
-          <div id="func-components" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Components of a Function</h3>
-            <ul class="grid gap-3 sm:grid-cols-2">
-              <li class="p-4 rounded-xl border border-slate-200 card"><strong>Prototype</strong> (declaration)</li>
-              <li class="p-4 rounded-xl border border-slate-200 card"><strong>Definition</strong> (body)</li>
-              <li class="p-4 rounded-xl border border-slate-200 card"><strong>Call</strong> (invocation)</li>
-              <li class="p-4 rounded-xl border border-slate-200 card"><strong>Return statement</strong> (optional)</li>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Can be slower due to function call overhead.</li>
+                <li>Uses more memory (stack space).</li>
+                <li>Difficult to debug.</li>
             </ul>
-          </div>
+        </li>
+    </ul>
 
-          <div id="func-prototype" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Function Prototype</h3>
-            <p>Introduces function to the compiler before use (type checking).</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-int max(int x, int y); // prototype
-
-int main(void) {
-    int m = max(10, 20);
-    printf("Max = %d\n", m);
-    return 0;
-}
-
-int max(int x, int y) { // definition
-    return (x &gt; y) ? x : y;
-}</code></pre>
-          </div>
-
-          <div id="func-definition" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Function Definition</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>return_type name(parameter_list) {
-    // declarations
-    // statements
-    return value; // optional if return_type is void
-}</code></pre>
-          </div>
-
-          <div id="func-call" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Function Call</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>int sum = add(5, 7); // actual arguments passed to function</code></pre>
-          </div>
-
-          <div id="func-return" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Return Statement</h3>
-            <p>Transfers control back to caller with optional value.</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>return expression;   // for non-void
-return;              // for void
-</code></pre>
-          </div>
-
-          <div id="func-types" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Types (Library &amp; User-Defined)</h3>
-            <ul class="list-disc pl-6">
-              <li><strong>Library</strong>: Provided by headers (e.g., <code>printf</code>, <code>sqrt</code>).</li>
-              <li><strong>User-defined</strong>: Written by programmer (e.g., <code>factorial</code>).</li>
-            </ul>
-          </div>
-
-          <div id="passing-args" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Passing Arguments</h3>
-            <ul class="list-disc pl-6">
-              <li><strong>By Value</strong>: copy of the value is passed (original unchanged).</li>
-              <li><strong>By Reference</strong>: address is passed via pointer (original may change).</li>
-            </ul>
-          </div>
-
-          <div id="call-by-value" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Call by Value</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-void increment(int x) {
-    x = x + 1; // modifies local copy only
-}
-
-int main(void) {
-    int a = 10;
-    increment(a);
-    printf("a = %d\n", a); // still 10
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="call-by-ref" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Call by Reference (using pointers)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-void increment(int *p) {
-    *p = *p + 1; // modifies original via address
-}
-
-int main(void) {
-    int a = 10;
-    increment(&a);
-    printf("a = %d\n", a); // 11
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="var-scope" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Variable &amp; Its Scope</h3>
-            <ul class="list-disc pl-6">
-              <li><strong>Local</strong>: declared inside a block/function; scope limited to that block.</li>
-              <li><strong>Global</strong>: declared outside all functions; accessible across file after declaration.</li>
-            </ul>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-int g = 100; // global
-
-void show(void) {
-    int x = 5; // local
-    printf("g=%d, x=%d\n", g, x);
-}
-
-int main(void) {
-    show();
-    // printf("%d", x); // ERROR: x out of scope
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="storage-class" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Storage Classes</h3>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">automatic (<code>auto</code>)</h4>
-                <p>Default for local variables; stored on stack; lifetime is block scope.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>void f(void){
-    auto int a = 0; // same as 'int a = 0;'
-}</code></pre>
-              </div>
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">external (<code>extern</code>)</h4>
-                <p>Declares a global variable defined elsewhere (other file or below).</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>// file1.c
-int counter = 0;
-
-// file2.c
-extern int counter;
-void use(){ counter++; }</code></pre>
-              </div>
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">static (<code>static</code>)</h4>
-                <p>Preserves value between calls; internal linkage for file-scope functions/variables.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-void tick(void){
-    static int c = 0; // initialized once
-    printf("%d\n", ++c);
-}</code></pre>
-              </div>
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">register (<code>register</code>)</h4>
-                <p>Requests storage in CPU register (hint to compiler; may be ignored).</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>void sum(int n){
-    register int i;
-    int s = 0;
-    for(i=0;i&lt;n;i++) s += i;
-}</code></pre>
-              </div>
-            </div>
-          </div>
-
-          <div id="func-array" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Function with Array (Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-int sumArray(const int a[], int n) {
-    int s = 0;
-    for (int i = 0; i &lt; n; i++) s += a[i];
-    return s;
-}
-
-int main(void) {
-    int arr[] = {2, 4, 6, 8};
-    int total = sumArray(arr, 4);
-    printf("Sum = %d\n", total);
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="recursion" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Recursive Function: Syntax &amp; Examples</h3>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">Factorial (n!)</h4>
-                <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-long long fact(int n){
-    if(n &lt;= 1) return 1;         // base case
-    return n * fact(n - 1);      // recursive case
-}
-
-int main(void){
-    printf("%lld\n", fact(5));   // 120
-    return 0;
-}</code></pre>
-              </div>
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2">Fibonacci</h4>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int fib(int n){
-    if(n &lt;= 1) return n;
-    return fib(n-1) + fib(n-2);
-}</code></pre>
-              </div>
-            </div>
-            <div class="grid gap-4 md:grid-cols-2 mt-4">
-              <div class="p-5 rounded-2xl border border-emerald-200 bg-emerald-50">
-                <h4 class="font-semibold">Advantages</h4>
-                <ul class="list-disc pl-6">
-                  <li>Compact, closer to mathematical definition.</li>
-                  <li>Elegant for divide-and-conquer problems.</li>
-                </ul>
-              </div>
-              <div class="p-5 rounded-2xl border border-rose-200 bg-rose-50">
-                <h4 class="font-semibold">Disadvantages</h4>
-                <ul class="list-disc pl-6">
-                  <li>Overhead of function calls; risk of stack overflow.</li>
-                  <li>Often slower than iterative solutions.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- STRUCTURE & UNION -->
-        <section id="struct-union" class="scroll-mt-28">
-          <h2 class="text-3xl font-extrabold">Structure &amp; Union</h2>
-
-          <div id="structure-intro" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Structure: Introduction &amp; Syntax</h3>
-            <p>A <strong>structure</strong> groups variables (possibly of different types) under one name.</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>struct Student {
-    int id;
-    char name[30];
-    float gpa;
-}; // semicolon is mandatory
-
-struct Student s1; // declaration</code></pre>
-          </div>
-
-          <div id="structure-size" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Structure Size</h3>
-            <p>Size depends on member sizes and padding/alignment.</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-#include &lt;stddef.h&gt; // for offsetof
-
-struct Demo { char c; int x; short y; };
-
-int main(void){
-    printf("sizeof(struct Demo) = %zu\n", sizeof(struct Demo));
-    printf("offset c=%zu, x=%zu, y=%zu\n",
-        offsetof(struct Demo, c),
-        offsetof(struct Demo, x),
-        offsetof(struct Demo, y));
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="structure-access" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Accessing Members (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
+    <h2>2. Structure and Union</h2>
+    <p>Structures and Unions are user-defined data types in C that allow you to combine different data types under a single name.</p>
+    <h3>Structure (<code>struct</code>)</h3>
+    <p>A structure is a collection of variables of different data types under a single name. Each member in a structure has its own memory location.</p>
+    <h4>Introduction and Syntax:</h4>
+    <pre><code>
+// Defining a structure
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+    </code></pre>
+    <h4>Structure Size and Accessing Members:</h4>
+    <p>The size of a structure is the sum of the sizes of all its members, plus any padding added by the compiler. You can access members using the dot (<code>.</code>) operator.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 
 struct Student {
-    int id;
-    char name[30];
-    float gpa;
+    char name[50];
+    int rollNumber;
+    float marks;
 };
 
-int main(void){
-    struct Student s = {1, "Aarav", 3.85f};
-    s.gpa = 3.90f;                 // dot operator
-    strcpy(s.name, "Pranjal");     // assign string
-    printf("%d %s %.2f\n", s.id, s.name, s.gpa);
+int main() {
+    struct Student s1;
+    strcpy(s1.name, "Alice");
+    s1.rollNumber = 101;
+    s1.marks = 85.5;
+
+    printf("Student Name: %s\n", s1.name);
+    printf("Roll Number: %d\n", s1.rollNumber);
+    printf("Marks: %.2f\n", s1.marks);
+
+    printf("Size of Student structure: %lu bytes\n", sizeof(struct Student));
     return 0;
-}</code></pre>
-          </div>
-
-          <div id="nested-structure" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Nested Structure (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>struct Date { int d, m, y; };
-
-struct Employee {
-    int id;
-    char name[30];
-    struct Date join; // nested
-};
-
-struct Employee e = {101, "Sam", {1, 7, 2025}};</code></pre>
-          </div>
-
-          <div id="array-structure" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Array of Structure (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-struct Book { int id; char title[40]; };
-
-int main(void){
-    struct Book lib[3] = {
-        {1, "C Basics"}, {2, "Pointers"}, {3, "File Handling"}
-    };
-    for (int i=0;i&lt;3;i++)
-        printf("%d: %s\n", lib[i].id, lib[i].title);
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="pass-struct-func" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Passing Structure to Function (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-struct Point { int x, y; };
-
-int manhattan(struct Point p){
-    return (p.x &lt; 0 ? -p.x : p.x) + (p.y &lt; 0 ? -p.y : p.y);
 }
+    </code></pre>
 
-void shift(struct Point *p, int dx, int dy){
-    p-&gt;x += dx; p-&gt;y += dy; // pass by reference
-}
-
-int main(void){
-    struct Point a = {3, -4};
-    printf("Manhattan = %d\n", manhattan(a)); // pass by value
-    shift(&a, 2, 5);                           // pass by reference
-    printf("After shift: (%d,%d)\n", a.x, a.y);
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="union-intro" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Union: Introduction &amp; Syntax</h3>
-            <p>A <strong>union</strong> allows different members to share the same memory location (size = largest member).</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>union Data {
-    int i;
-    float f;
-    char c;
-};
-
-union Data d;
-d.i = 42; // writing to one member overwrites others</code></pre>
-          </div>
-
-          <div id="struct-vs-union" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Comparison: Structure vs Union</h3>
-            <div class="overflow-x-auto border border-slate-200 rounded-2xl">
-              <table class="min-w-full text-sm">
-                <thead class="bg-slate-100">
-                  <tr>
-                    <th class="text-left p-3">Aspect</th>
-                    <th class="text-left p-3">Structure</th>
-                    <th class="text-left p-3">Union</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">Storage</td>
-                    <td class="p-3">Separate memory for all members.</td>
-                    <td class="p-3">Single shared memory (size of largest member).</td>
-                  </tr>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">Access</td>
-                    <td class="p-3">All members can be valid simultaneously.</td>
-                    <td class="p-3">Only the most recently written member is valid.</td>
-                  </tr>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">Use-case</td>
-                    <td class="p-3">Heterogeneous records (e.g., Student).</td>
-                    <td class="p-3">Memory-efficient variants/overlays.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <!-- POINTERS -->
-        <section id="pointers" class="scroll-mt-28">
-          <h2 class="text-3xl font-extrabold">Pointers</h2>
-
-          <div id="pointers-intro" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Introduction &amp; Syntax</h3>
-            <p>A <strong>pointer</strong> stores the <em>address</em> of a variable.</p>
-            <pre class="p-4 rounded-xl overflow-auto"><code>int x = 5;
-int *p = &x;   // p holds address of x
-printf("%d", *p); // dereference =&gt; value 5</code></pre>
-          </div>
-
-          <div id="pointers-usage" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Usage &amp; Working</h3>
-            <ul class="list-disc pl-6">
-              <li>Enable <strong>call-by-reference</strong>.</li>
-              <li>Dynamic memory management.</li>
-              <li>Array and string manipulation.</li>
-              <li>Efficient data structure implementations (linked lists, trees).</li>
-            </ul>
-          </div>
-
-          <div id="value-address" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Concept of Value &amp; Address</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-int main(void){
-    int a = 9;
-    int *p = &a;
-    printf("Value=%d, Address=%p\n", a, (void*)p);
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="decl-init" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Declaration &amp; Initialization</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>int *pa;              // declaration
-int x = 10; pa = &x;  // initialization
-// Null initialization for safety:
-int *px = NULL;</code></pre>
-          </div>
-
-          <div id="pointer-function" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Pointer &amp; Function (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>void swap(int *a, int *b){
-    int t = *a; *a = *b; *b = t;
-}</code></pre>
-          </div>
-
-          <div id="ref-example" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Call by Reference (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-void swap(int *a, int *b){ int t=*a; *a=*b; *b=t; }
-
-int main(void){
-    int x=3, y=7;
-    swap(&x, &y);
-    printf("x=%d y=%d\n", x, y); // x=7 y=3
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="value-vs-ref" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Call by Value vs Call by Reference</h3>
-            <div class="overflow-x-auto border border-slate-200 rounded-2xl">
-              <table class="min-w-full text-sm">
-                <thead class="bg-slate-100">
-                  <tr>
-                    <th class="text-left p-3">Aspect</th>
-                    <th class="text-left p-3">By Value</th>
-                    <th class="text-left p-3">By Reference</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">What is passed?</td>
-                    <td class="p-3">Copy of value</td>
-                    <td class="p-3">Address of variable</td>
-                  </tr>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">Effect on original</td>
-                    <td class="p-3">No change</td>
-                    <td class="p-3">Can change</td>
-                  </tr>
-                  <tr class="border-t">
-                    <td class="p-3 font-medium">Overhead</td>
-                    <td class="p-3">Low for small types</td>
-                    <td class="p-3">Low; efficient for large structs</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div id="pointer-arrays" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Pointer with Arrays (with Example)</h3>
-            <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-int main(void){
-    int a[5] = {10,20,30,40,50};
-    int *p = a; // same as &a[0]
-    for (int i=0;i&lt;5;i++)
-        printf("%d ", *(p+i));
-    return 0;
-}</code></pre>
-          </div>
-
-          <div id="ptr-adv-disadv" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Advantages &amp; Disadvantages</h3>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div class="p-5 rounded-2xl border border-emerald-200 bg-emerald-50">
-                <h4 class="font-semibold">Advantages</h4>
-                <ul class="list-disc pl-6">
-                  <li>Efficient parameter passing and memory access.</li>
-                  <li>Required for dynamic data structures.</li>
-                </ul>
-              </div>
-              <div class="p-5 rounded-2xl border border-rose-200 bg-rose-50">
-                <h4 class="font-semibold">Disadvantages</h4>
-                <ul class="list-disc pl-6">
-                  <li>Dangling/NULL pointer dereference can crash program.</li>
-                  <li>Memory leaks if not managed properly.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- FILE HANDLING -->
-        <section id="file-handling" class="scroll-mt-28">
-          <h2 class="text-3xl font-extrabold">File Handling</h2>
-
-          <div id="data-file" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Concept of Data File &amp; Need</h3>
-            <ul class="list-disc pl-6">
-              <li>A <strong>data file</strong> stores program data persistently on disk.</li>
-              <li>Needed to retain data across program runs, share data, and handle large datasets.</li>
-            </ul>
-          </div>
-
-          <div id="file-types" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Sequential &amp; Random Files</h3>
-            <ul class="list-disc pl-6">
-              <li><strong>Sequential</strong>: read/write in order from beginning to end.</li>
-              <li><strong>Random (Direct) Access</strong>: move to arbitrary positions for read/write.</li>
-            </ul>
-          </div>
-
-          <div id="file-functions" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">File Handling Functions — Definitions (Purpose &amp; Syntax)</h3>
-
-            <div class="grid gap-5">
-              <!-- fopen / fclose -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>fopen()</code> &amp; <code>fclose()</code></h4>
-                <p><code>fopen</code> opens a file in specified mode and returns <code>FILE*</code>; <code>fclose</code> closes a file.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>FILE *fopen(const char *filename, const char *mode);
-int fclose(FILE *stream);</code></pre>
-              </div>
-
-              <!-- getc / putc -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>getc()</code> &amp; <code>putc()</code></h4>
-                <p>Character I/O from/to a file.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int getc(FILE *stream);
-int putc(int ch, FILE *stream);</code></pre>
-              </div>
-
-              <!-- fprintf / fscanf -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>fprintf()</code> &amp; <code>fscanf()</code></h4>
-                <p>Formatted output and input with a file stream.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int fprintf(FILE *stream, const char *format, ...);
-int fscanf(FILE *stream, const char *format, ...);</code></pre>
-              </div>
-
-              <!-- getw / putw -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>getw()</code> &amp; <code>putw()</code></h4>
-                <p><em>Non-standard</em> integer I/O; avoid in portable code; prefer <code>fread/fwrite</code> or <code>fprintf/fscanf</code>.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int getw(FILE *stream);   // non-standard / obsolete
-int putw(int w, FILE *stream);</code></pre>
-              </div>
-
-              <!-- fgets / fputs -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>fgets()</code> &amp; <code>fputs()</code></h4>
-                <p>String line I/O.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>char *fgets(char *s, int n, FILE *stream);
-int fputs(const char *s, FILE *stream);</code></pre>
-              </div>
-
-              <!-- fread / fwrite -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>fread()</code> &amp; <code>fwrite()</code></h4>
-                <p>Binary block I/O.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);</code></pre>
-              </div>
-
-              <!-- remove / rename -->
-              <div class="p-5 rounded-2xl border border-slate-200 card code-card">
-                <h4 class="font-semibold mb-2"><code>remove()</code> &amp; <code>rename()</code></h4>
-                <p>Delete or rename a file.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int remove(const char *filename);
-int rename(const char *oldname, const char *newname);</code></pre>
-              </div>
-            </div>
-
-            <!-- Small worked example -->
-            <div class="mt-6 p-5 rounded-2xl border border-slate-200 card">
-              <h4 class="font-semibold mb-2">Mini Example: Write &amp; Read</h4>
-              <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
-
-int main(void){
-    FILE *fp = fopen("data.txt", "w");
-    if(!fp) return 1;
-    fprintf(fp, "Name: %s Age: %d\n", "Pranjal", 20);
-    fclose(fp);
-
-    fp = fopen("data.txt", "r");
-    if(!fp) return 1;
-    char name[32]; int age;
-    fscanf(fp, "Name: %31s Age: %d", name, &age);
-    printf("%s %d\n", name, age);
-    fclose(fp);
-    return 0;
-}</code></pre>
-            </div>
-          </div>
-
-          <div id="random-access" class="scroll-mt-28">
-            <h3 class="text-2xl font-bold">Random Access Functions (Purpose &amp; Syntax)</h3>
-
-            <div class="grid gap-5 md:grid-cols-3">
-              <!-- fseek -->
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2"><code>fseek()</code></h4>
-                <p>Moves file position indicator to a given offset.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>int fseek(FILE *stream, long offset, int whence);
-// whence: SEEK_SET, SEEK_CUR, SEEK_END</code></pre>
-              </div>
-
-              <!-- rewind -->
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2"><code>rewind()</code></h4>
-                <p>Resets file position to beginning (equivalent to <code>fseek(stream, 0, SEEK_SET)</code>).</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>void rewind(FILE *stream);</code></pre>
-              </div>
-
-              <!-- ftell -->
-              <div class="p-5 rounded-2xl border border-slate-200 card">
-                <h4 class="font-semibold mb-2"><code>ftell()</code></h4>
-                <p>Returns current file position as a <code>long</code> offset.</p>
-                <pre class="p-4 rounded-xl overflow-auto"><code>long ftell(FILE *stream);</code></pre>
-              </div>
-            </div>
-
-            <div class="mt-6 p-5 rounded-2xl border border-slate-200 card">
-              <h4 class="font-semibold mb-2">Random Access Example (Binary Records)</h4>
-              <pre class="p-4 rounded-xl overflow-auto"><code>#include &lt;stdio.h&gt;
+    <h3>Nested Structure</h3>
+    <p>A nested structure is a structure that contains another structure as one of its members.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 
-struct Rec { int id; char name[20]; };
+struct DateOfBirth {
+    int day;
+    int month;
+    int year;
+};
 
-int main(void){
-    struct Rec r = {1, "Alpha"};
-    FILE *fp = fopen("rec.bin", "wb+");
-    if(!fp) return 1;
+struct Student {
+    char name[50];
+    int rollNumber;
+    struct DateOfBirth dob; // Nested structure
+};
 
-    fwrite(&r, sizeof(r), 1, fp);      // write record 0
+int main() {
+    struct Student s1;
+    strcpy(s1.name, "Bob");
+    s1.rollNumber = 102;
+    s1.dob.day = 15;
+    s1.dob.month = 6;
+    s1.dob.year = 2005;
 
-    // Write record 5 directly (skipping in between)
-    struct Rec r6 = {6, "Zeta"};
-    fseek(fp, 5 * (long)sizeof(struct Rec), SEEK_SET);
-    fwrite(&r6, sizeof(r6), 1, fp);
+    printf("Student Name: %s\n", s1.name);
+    printf("Date of Birth: %d-%d-%d\n", s1.dob.day, s1.dob.month, s1.dob.year);
+    return 0;
+}
+    </code></pre>
 
-    // Read record 0
-    rewind(fp);
-    struct Rec t = {0};
-    fread(&t, sizeof(t), 1, fp);
-    printf("rec0: %d %s\n", t.id, t.name);
+    <h3>Array of Structure</h3>
+    <p>An array of structures allows you to store multiple records of the same structure type.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
 
-    // Where are we?
-    long pos = ftell(fp);
-    printf("pos=%ld\n", pos);
+struct Student {
+    char name[50];
+    int rollNumber;
+};
 
+int main() {
+    struct Student class[3]; // Array of 3 Student structures
+
+    class[0].rollNumber = 101;
+    strcpy(class[0].name, "Alice");
+    class[1].rollNumber = 102;
+    strcpy(class[1].name, "Bob");
+    class[2].rollNumber = 103;
+    strcpy(class[2].name, "Charlie");
+
+    for (int i = 0; i < 3; i++) {
+        printf("Student %d: %s (Roll No: %d)\n", i+1, class[i].name, class[i].rollNumber);
+    }
+    return 0;
+}
+    </code></pre>
+
+    <h3>Passing Structure to Function</h3>
+    <p>You can pass an entire structure to a function, either by value or by reference (using pointers).</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+struct Point {
+    int x;
+    int y;
+};
+
+// Pass by value
+void printPoint(struct Point p) {
+    printf("Point coordinates (pass by value): (%d, %d)\n", p.x, p.y);
+}
+
+// Pass by reference
+void modifyPoint(struct Point *p) {
+    p->x = 20;
+    p->y = 40;
+}
+
+int main() {
+    struct Point p1 = {10, 20};
+    printPoint(p1);
+    modifyPoint(&p1);
+    printf("Modified point coordinates (pass by reference): (%d, %d)\n", p1.x, p1.y);
+    return 0;
+}
+    </code></pre>
+
+    <h3>Union (<code>union</code>)</h3>
+    <p>A union is a special data type that allows different members to share the **same memory location**. The size of a union is determined by its largest member.</p>
+    <h4>Introduction and Syntax:</h4>
+    <pre><code>
+// Defining a union
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+    </code></pre>
+
+    <h3>Comparison between Structure and Union</h3>
+    <table border="1">
+        <tr>
+            <th>Feature</th>
+            <th>Structure</th>
+            <th>Union</th>
+        </tr>
+        <tr>
+            <td><strong>Memory Allocation</strong></td>
+            <td>Each member has its own unique memory location.</td>
+            <td>All members share the same memory location.</td>
+        </tr>
+        <tr>
+            <td><strong>Size</strong></td>
+            <td>Sum of the sizes of all its members (plus padding).</td>
+            <td>Equal to the size of the largest member.</td>
+        </tr>
+        <tr>
+            <td><strong>Value Storage</strong></td>
+            <td>All members can store values simultaneously.</td>
+            <td>Only one member can store a value at a time. The last assigned value overwrites previous ones.</td>
+        </tr>
+        <tr>
+            <td><strong>Keyword</strong></td>
+            <td><code>struct</code></td>
+            <td><code>union</code></td>
+        </tr>
+    </table>
+
+    <h2>3. Pointers</h2>
+    <p>A pointer is a variable that stores the memory address of another variable. It is a fundamental and powerful concept in C.</p>
+    <h3>Introduction and Syntax:</h3>
+    <p>Pointers are declared using an asterisk (<code>*</code>).</p>
+    <pre><code>
+dataType *pointerName;
+    </code></pre>
+    <p>The address of a variable is obtained using the address-of operator (<code>&</code>), and the value at an address is accessed using the dereference operator (<code>*</code>).</p>
+
+    <h3>Concept of Value and Address</h3>
+    <p>Every variable has a value and a memory address. The value is the data stored in that memory location, and the address is the location itself.  A pointer holds an address as its value.</p>
+    <h4>Declaration and Initialization:</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int var = 10;
+    int *ptr; // Pointer declaration
+    ptr = &var; // Pointer initialization (stores address of var)
+
+    printf("Value of var: %d\n", var);
+    printf("Address of var: %p\n", &var);
+    printf("Value stored in ptr (address): %p\n", ptr);
+    printf("Value pointed to by ptr: %d\n", *ptr);
+    return 0;
+}
+    </code></pre>
+
+    <h3>Pointer and Function: Call by Reference</h3>
+    <p>Pointers are essential for implementing "call by reference," allowing a function to modify the actual variables in the calling function. The address is passed to the function, and the pointer inside the function can dereference it to modify the original value.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swap(&x, &y); // Pass addresses
+    printf("After swap: x = %d, y = %d\n", x, y);
+    return 0;
+}
+    </code></pre>
+    <h4>Comparison between Call by Value and Call by Reference:</h4>
+    <table border="1">
+        <tr>
+            <th>Aspect</th>
+            <th>Call by Value</th>
+            <th>Call by Reference</th>
+        </tr>
+        <tr>
+            <td><strong>What is Passed</strong></td>
+            <td>A copy of the argument's value.</td>
+            <td>The memory address of the argument.</td>
+        </tr>
+        <tr>
+            <td><strong>Modification</strong></td>
+            <td>Changes inside the function do not affect the original variable.</td>
+            <td>Changes inside the function do affect the original variable.</td>
+        </tr>
+        <tr>
+            <td><strong>Memory</strong></td>
+            <td>Separate memory is allocated for the parameter.</td>
+            <td>The same memory location is used for the variable.</td>
+        </tr>
+        <tr>
+            <td><strong>Use Case</strong></td>
+            <td>When you want to protect the original data from modification.</td>
+            <td>When you need to modify the original data.</td>
+        </tr>
+    </table>
+
+    <h3>Pointer with Arrays</h3>
+    <p>An array's name acts as a constant pointer to its first element. This means you can use pointers to access and traverse array elements.</p>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int *ptr = arr; // ptr points to the first element (arr[0])
+
+    // Accessing elements using pointer arithmetic
+    printf("Value of arr[0]: %d\n", *ptr);
+    printf("Value of arr[1]: %d\n", *(ptr + 1));
+    printf("Value of arr[2]: %d\n", *(ptr + 2));
+    
+    // Traversing the array
+    printf("\nTraversing array with pointer:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("%d ", *(ptr + i));
+    }
+    printf("\n");
+    return 0;
+}
+    </code></pre>
+    <h4>Advantages and Disadvantages of Pointers:</h4>
+    <ul>
+        <li><strong>Advantages:</strong>
+            <ul>
+                <li>Efficient memory management and dynamic memory allocation.</li>
+                <li>Reduces code size and improves performance for large data sets.</li>
+                <li>Allows for passing variables by reference to functions.</li>
+            </ul>
+        </li>
+        <li><strong>Disadvantages:</strong>
+            <ul>
+                <li>Can lead to memory leaks and dangling pointers if not managed correctly.</li>
+                <li>Complex to understand for beginners.</li>
+                <li>Unsafe if not handled carefully.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>4. File Handling</h2>
+    <p>File handling in C allows a program to store and retrieve data from files on disk, ensuring data persistence even after the program terminates.</p>
+    <h3>Concept of Data File and Need for File Handling in C</h3>
+    <p>A data file is a collection of related records stored on a physical storage device. File handling is necessary for managing data that needs to be stored permanently and shared between different program executions.</p>
+    <p>Files can be categorized as **Sequential** (accessed in a sequence from beginning to end) or **Random** (accessed directly at any location). Most of the file handling functions are for sequential access.</p>
+
+    <h3>File Handling Functions</h3>
+    <p>These are standard library functions for performing file operations. All of them use a file pointer (<code>FILE*</code>).</p>
+    <ul>
+        <li><code><strong>FILE *fopen(const char *filename, const char *mode);</strong></code>: Opens a file and returns a file pointer. Returns <code>NULL</code> on failure.
+            <ul><li><code>filename</code>: The name of the file to open.</li><li><code>mode</code>: The file opening mode (e.g., "r", "w", "a").</li></ul>
+        </li>
+        <li><code><strong>int fclose(FILE *fp);</strong></code>: Closes an opened file and flushes its buffer.
+            <ul><li><code>fp</code>: The file pointer of the file to close.</li></ul>
+        </li>
+        <li><code><strong>int getc(FILE *fp);</strong></code>: Reads a single character from the file.</li>
+        <li><code><strong>int putc(int c, FILE *fp);</strong></code>: Writes a single character to the file.</li>
+        <li><code><strong>int fprintf(FILE *fp, const char *format, ...);</strong></code>: Writes formatted data to a file.</li>
+        <li><code><strong>int fscanf(FILE *fp, const char *format, ...);</strong></code>: Reads formatted data from a file.</li>
+        <li><code><strong>int getw(FILE *fp);</strong></code>: Reads an integer from a file.</li>
+        <li><code><strong>int putw(int w, FILE *fp);</strong></code>: Writes an integer to a file.</li>
+        <li><code><strong>char *fgets(char *str, int n, FILE *fp);</strong></code>: Reads a line of text from a file into a string.
+            <ul><li><code>str</code>: The buffer to store the string.</li><li><code>n</code>: The maximum number of characters to read.</li></ul>
+        </li>
+        <li><code><strong>int fputs(const char *str, FILE *fp);</strong></code>: Writes a string to a file.</li>
+        <li><code><strong>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *fp);</strong></code>: Reads a block of data from a file.</li>
+        <li><code><strong>size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *fp);</strong></code>: Writes a block of data to a file.</li>
+        <li><code><strong>int remove(const char *filename);</strong></code>: Deletes a file.</li>
+        <li><code><strong>int rename(const char *old_filename, const char *new_filename);</strong></code>: Renames a file.</li>
+    </ul>
+
+    <h3>Random Access Functions</h3>
+    <p>These functions allow you to move the file pointer to any location in the file for random access.</p>
+    <ul>
+        <li><code><strong>int fseek(FILE *fp, long int offset, int origin);</strong></code>: Sets the file pointer to a specific position.
+            <ul><li><code>offset</code>: Number of bytes to move.</li><li><code>origin</code>: Starting position (<code>SEEK_SET</code> for beginning, <code>SEEK_CUR</code> for current, <code>SEEK_END</code> for end).</li></ul>
+        </li>
+        <li><code><strong>void rewind(FILE *fp);</strong></code>: Resets the file pointer to the beginning of the file.</li>
+        <li><code><strong>long int ftell(FILE *fp);</strong></code>: Returns the current position of the file pointer.</li>
+    </ul>
+
+    <h3>File Opening Modes</h3>
+    <ul>
+        <li><strong>Read (<code>r</code>, <code>r+</code>):</strong> Opens a file for reading. The file must exist. <code>r+</code> also allows writing.</li>
+        <li><strong>Write (<code>w</code>, <code>w+</code>):</strong> Opens a file for writing. If the file exists, its content is erased. If not, a new file is created. <code>w+</code> also allows reading.</li>
+        <li><strong>Append (<code>a</code>, <code>a+</code>):</strong> Opens a file for writing, but at the end of the file. If the file does not exist, a new one is created. <code>a+</code> also allows reading.</li>
+    </ul>
+
+    <h3>Steps to Work with File in C</h3>
+    <ol>
+        <li><strong>Define File Pointer:</strong> Create a pointer of type <code>FILE</code>. Example: <code>FILE *fp;</code></li>
+        <li><strong>Open File with Required Mode:</strong> Use <code>fopen()</code> to open the file.</li>
+        <li><strong>Read, Write, Append Operations:</strong> Perform the desired operation using appropriate functions.</li>
+        <li><strong>Close the File:</strong> Use <code>fclose()</code> to close the file and save changes.</li>
+    </ol>
+
+    <h4>Reading Data from Files:</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fp;
+    char buffer[100];
+    fp = fopen("example.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    while (fgets(buffer, 100, fp) != NULL) {
+        printf("%s", buffer);
+    }
     fclose(fp);
     return 0;
-}</code></pre>
-            </div>
-          </div>
-        </section>
+}
+    </code></pre>
 
-        <!-- FOOTNOTE -->
-        <section class="scroll-mt-28">
-          <div class="p-5 rounded-2xl border border-slate-200 card">
-            <p class="text-sm text-slate-500">
-              Tip: Use <span class="kbd">Ctrl</span> + <span class="kbd">/</span> in your editor to toggle comments. Compile with
-              <code>gcc file.c -o prog</code> and run <code>./prog</code> (or <code>prog.exe</code> on Windows).
-            </p>
-          </div>
-        </section>
-      </section>
-    </div>
-  </main>
+    <h4>Writing Data on Files:</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
 
-  <!-- Floating TOC helper -->
-  <button id="scrollTopBtn" class="fixed bottom-6 right-6 px-4 py-2 rounded-2xl bg-blue-600 text-white font-semibold shadow-soft hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 hidden">
-    ↑ Top
-  </button>
+int main() {
+    FILE *fp;
+    fp = fopen("example_write.txt", "w");
+    if (fp == NULL) {
+        printf("Error creating file!\n");
+        return 1;
+    }
+    fprintf(fp, "Hello, world!\n");
+    fprintf(fp, "This is a test.");
+    fclose(fp);
+    printf("Data written to file successfully.\n");
+    return 0;
+}
+    </code></pre>
 
-  <!-- Scripts -->
-  <script>
-    // Highlight active TOC link on scroll
-    const sections = [...document.querySelectorAll("section[id]")];
-    const tocLinks = [...document.querySelectorAll("#toc .toc-link")];
+    <h4>Appending Data Files:</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const id = entry.target.getAttribute("id");
-          tocLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-        }
-      });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+int main() {
+    FILE *fp;
+    fp = fopen("example_write.txt", "a");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    fprintf(fp, "\nAppending a new line.");
+    fclose(fp);
+    printf("Data appended to file successfully.\n");
+    return 0;
+}
+    </code></pre>
 
-    sections.forEach(sec => observer.observe(sec));
+    <h3>End of File (EOF)</h3>
+    <p><code>EOF</code> is a macro defined in <code>stdio.h</code> that stands for "End of File." It's a special constant value returned by file input functions (like <code>getc()</code> or <code>fscanf()</code>) to indicate that the end of the file has been reached, preventing the program from reading beyond the file's content.</p>
 
-    // Show "Top" button
-    const topBtn = document.getElementById("scrollTopBtn");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 800) topBtn.classList.remove("hidden");
-      else topBtn.classList.add("hidden");
-    });
-    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  </script>
+    <h2>5. The <code>typedef</code> Keyword</h2>
+    <p>The <code>typedef</code> keyword is used to create an alias or a new name for an existing data type. It is commonly used to make code more readable and portable.</p>
+    <h4>Syntax:</h4>
+    <pre><code>
+typedef existing_dataType new_name;
+    </code></pre>
+    <h4>Example:</h4>
+    <pre><code>
+#include &lt;stdio.h&gt;
+
+typedef unsigned int UINT;
+typedef struct Student Student;
+
+struct Student {
+    char name[50];
+    int rollNumber;
+};
+
+int main() {
+    UINT number = 100;
+    Student s1; // Using the new alias
+    s1.rollNumber = 20;
+
+    printf("Number: %u\n", number);
+    printf("Student roll number: %d\n", s1.rollNumber);
+    return 0;
+}
+    </code></pre>
+
+</div>
+
+<footer>
+    © 2024 Grade 12 Computer Science
+</footer>
+
 </body>
 </html>
